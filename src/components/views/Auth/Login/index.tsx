@@ -25,6 +25,8 @@ const Login = () => {
           width={400}
           height={400}
         />
+        <h1 className="text-5xl font-bold mt-5 tracking-widest">NSMHC</h1>
+        <p className="text-sm">Nursing Students Mother Heart Connection</p>
       </div>
       <div className="border rounded-3xl bg-white p-6 shadow-lg">
         {/* {errors.root && (
