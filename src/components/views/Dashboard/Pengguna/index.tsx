@@ -19,8 +19,16 @@ const Pengguna = () => {
           );
         case 'name':
           return (
-            <div className="flex justify-center w-full">
-              <p className="truncate w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">
+            <div className="w-[150px] lg:w-full ">
+              <p className="truncate lg:truncate-none">
+                {cellValue as ReactNode}
+              </p>
+            </div>
+          );
+        case 'last_job_husband':
+          return (
+            <div className="w-[100px] lg:w-full ">
+              <p className="truncate lg:truncate-none">
                 {cellValue as ReactNode}
               </p>
             </div>

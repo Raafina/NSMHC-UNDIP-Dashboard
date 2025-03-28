@@ -54,7 +54,7 @@ const TableUI = (props: PropTypes) => {
 
   const BottomContent = useMemo(() => {
     return (
-      <div className="flex items-center justify-end ">
+      <div className="flex items-center justify-center md:justify-end ">
         {totalPages > 1 && (
           <Pagination
             isCompact
@@ -82,7 +82,11 @@ const TableUI = (props: PropTypes) => {
       bottomContentPlacement="outside">
       <TableHeader columns={columns}>
         {(column) => (
-          <TableColumn className="text-center " key={column.uid as Key}>
+          <TableColumn
+            key={column.uid as Key}
+            className={cn('text-center', {
+              'text-start': column.key === 'name',
+            })}>
             {column.name as string}
           </TableColumn>
         )}
@@ -100,7 +104,10 @@ const TableUI = (props: PropTypes) => {
         {(item) => (
           <TableRow key={item._id as Key}>
             {(columnKey) => (
-              <TableCell className="text-center ">
+              <TableCell
+                className={cn('text-center', {
+                  'text-start': columnKey === 'name',
+                })}>
                 {renderCell(item, columnKey)}
               </TableCell>
             )}
