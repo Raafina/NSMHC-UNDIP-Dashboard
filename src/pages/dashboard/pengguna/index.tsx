@@ -1,14 +1,14 @@
 import DashboardLayout from '@/components/layouts/DashboardLayout';
-import Beranda from '@/components/views/Admin/Beranda';
-const BerandaPage = () => {
+import Pengguna from '@/components/views/Dashboard/Pengguna';
+const PenggunaPage = () => {
   return (
     <DashboardLayout
-      title="Beranda"
+      title="Pengguna"
       description="Halaman ini menampilkan Data Pengguna"
       type="admin">
-      <Beranda />
+      <Pengguna />
     </DashboardLayout>
   );
 };
 
-export default BerandaPage;
+export default PenggunaPage;

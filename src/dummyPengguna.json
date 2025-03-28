@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "foto": null,
+    "name": "Muhammad Naruto Uzumaki Uchiha",
+    "anak": 2,
+    "last_job_husband": "Enggineer",
+    "no_hp": "088888888"
+  },
+  {
+    "id": 2,
+    "foto": null,
+    "name": "Ghani",
+    "anak": 2,
+    "last_job_husband": "Enggineer",
+    "no_hp": "088888888"
+  },
+  {
+    "id": 3,
+    "foto": null,
+    "name": "Ghani",
+    "anak": 2,
+    "last_job_husband": "Enggineer",
+    "no_hp": "088888888"
+  },
+  {
+    "id": 4,
+    "foto": null,
+    "name": "Ghani",
+    "anak": 2,
+    "last_job_husband": "Enggineer",
+    "no_hp": "088888888"
+  },
+  {
+    "id": 5,
+    "foto": null,
+    "name": "Ghani",
+    "anak": 2,
+    "last_job_husband": "Enggineer",
+    "no_hp": "088888888"
+  }
+]

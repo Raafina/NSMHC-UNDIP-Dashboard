@@ -1,4 +1,5 @@
 import PageHead from '@/components/commons/PageHead';
+import BreadcrumbsUI from '@/components/UI/BreadCrumbs';
 import { ReactNode, useState } from 'react';
 import DashboardLayoutSidebar from './DashboardLayoutSidebar';
 import { SIDEBAR_ADMIN } from './DashboardLayout.constans';
@@ -27,13 +28,13 @@ const DashboardLayout = (props: PropTypes) => {
             classNames={{ wrapper: 'p-0' }}
             position="static">
             <div className="flex flex-col">
-              <h1 className="pt-2 text-2xl md:text-3xl text-brown-extreme-dark font-medium">
+              <h1 className="text-xl md:text-3xl text-brown-extreme-dark font-medium">
                 {title}
               </h1>
-              <p className="pt-b text-base text-brown-extreme-dark">
+              <p className="text-small md:text-base text-brown-extreme-dark">
                 {description}
               </p>
-              <p className="pb-2 text-small  text-brown-dark">Beranda</p>
+              <BreadcrumbsUI />
             </div>
             <NavbarMenuToggle
               aria-label={open ? 'Close Menu' : 'Open Menu'}

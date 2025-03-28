@@ -1,1 +1,0 @@
-const BERANDA_DATA = [];

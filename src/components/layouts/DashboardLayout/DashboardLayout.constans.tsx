@@ -7,25 +7,25 @@ const SIDEBAR_ADMIN = [
   {
     key: 'beranda',
     label: 'Beranda',
-    href: '/admin/beranda',
+    href: '/dashboard/beranda',
     icon: <MdDashboard />,
   },
   {
     key: 'pengguna',
     label: 'Pengguna',
-    href: '/admin/pengguna',
+    href: '/dashboard/pengguna',
     icon: <FaUser />,
   },
   {
     key: 'reaksi',
     label: 'Reaksi',
-    href: '/admin/reaksi',
+    href: '/dashboard/reaksi',
     icon: <LuSmilePlus />,
   },
   {
     key: 'progress-pengguna',
     label: 'Progress Pengguna',
-    href: '/admin/progress-pengguna',
+    href: '/dashboard/progress-pengguna',
     icon: <CgDatabase />,
   },
 ];

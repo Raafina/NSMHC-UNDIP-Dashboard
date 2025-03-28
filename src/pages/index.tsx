@@ -1,4 +1,4 @@
-import BerandaPage from './admin/beranda';
+import BerandaPage from './dashboard/beranda';
 const HomePage = () => {
   return <BerandaPage />;
 };

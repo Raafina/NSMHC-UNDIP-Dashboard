@@ -11,8 +11,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#B97345",
         'brown-extreme-dark': "#2C2C2C",
         'brown-very-dark': "#8D4D24",
         'brown-darker': "#454545",
