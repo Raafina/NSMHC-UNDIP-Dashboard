@@ -3,7 +3,7 @@ import Login from '@/components/views/Auth/Login';
 
 const LoginPage = () => {
   return (
-    <AuthLayout title="Acara | Login">
+    <AuthLayout title="Login | NSMHC">
       <Login />
     </AuthLayout>
   );
