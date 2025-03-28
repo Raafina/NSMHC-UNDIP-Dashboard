@@ -1,6 +1,6 @@
-import BerandaPage from './dashboard/beranda';
+import LoginPage from './auth/login';
 const HomePage = () => {
-  return <BerandaPage />;
+  return <LoginPage />;
 };
 
 export default HomePage;

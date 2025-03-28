@@ -1,10 +1,10 @@
 import { Button, Card, CardBody, Input, Spinner } from '@heroui/react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import Image from 'next/image';
-import Link from 'next/link';
 import useLogin from './useLogin';
 import { Controller } from 'react-hook-form';
 import { cn } from '@/utils/cn';
+import { MdAdminPanelSettings } from 'react-icons/md';
 
 const Login = () => {
   const {
@@ -17,8 +17,8 @@ const Login = () => {
     errors,
   } = useLogin();
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-10 lg:flex-row lg:gap-60">
-      <div className="flex w-full flex-col items-center justify-center lg:w-1/2">
+    <div className="flex w-full flex-col items-center justify-center gap-10 md:flex-row lg:gap-60">
+      <div className="hidden md:flex w-full flex-col items-center justify-center md:w-1/2 ">
         <Image
           src="/images/logo/NSMHC_Logo.svg"
           alt="logo"
@@ -26,22 +26,23 @@ const Login = () => {
           height={400}
         />
       </div>
-      <Card>
-        <CardBody className="p-8">
-          <h2 className="text-2xl font-bold text-danger-500">Login</h2>
-
-          {/* {errors.root && (
+      <div className="border rounded-3xl bg-white p-6 shadow-lg">
+        {/* {errors.root && (
             <p className="mb-2 font-medium text-danger">
               {errors?.root?.message}
             </p>
           )} */}
-          <form
-            className={cn(
-              'flex w-80 flex-col',
-              Object.keys(errors).length > 0 ? 'gap-2' : 'gap-4'
-            )}
-            // onSubmit={handleSubmit(handleLogin)}
-          >
+        <form
+          className={cn(
+            'flex w-80 flex-col justify-center',
+            Object.keys(errors).length > 0
+          )}
+          onSubmit={handleSubmit(() => {}) /* handleLogin */}>
+          <div className="mb-2 flex flex-col items-center">
+            <MdAdminPanelSettings size={100} />
+            <h1 className="text-3xl text-center font-bold">Admin</h1>
+          </div>
+          <div className="flex flex-col gap-4">
             <Controller
               name="identifier"
               control={control}
@@ -49,11 +50,16 @@ const Login = () => {
                 <Input
                   {...field}
                   type="text"
-                  label="Email / Username"
+                  label="Email"
+                  labelPlacement="outside"
+                  placeholder="Masukkan email"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.identifier !== undefined}
                   errorMessage={errors.identifier?.message}
+                  classNames={{
+                    label: 'font-semibold',
+                  }}
                 />
               )}
             />
@@ -65,10 +71,15 @@ const Login = () => {
                   {...field}
                   type={isVisible ? 'text' : 'password'}
                   label="Password"
+                  labelPlacement="outside"
+                  placeholder="Masukkan kata sandi"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.password !== undefined}
                   errorMessage={errors.password?.message}
+                  classNames={{
+                    label: 'font-semibold',
+                  }}
                   endContent={
                     <button
                       className="focus:outline-none"
@@ -84,14 +95,13 @@ const Login = () => {
                 />
               )}
             />
-
-            <Button color="secondary" size="lg" type="submit">
+            <Button color="secondary" size="lg" type="submit" radius="full">
               {/* {isPendingLogin ? <Spinner color="white" size="sm" /> : 'Login'} */}
-              Login
+              Masuk
             </Button>
-          </form>
-        </CardBody>
-      </Card>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
