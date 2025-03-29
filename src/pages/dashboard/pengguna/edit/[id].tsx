@@ -1,7 +1,7 @@
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import PenggunaEdit from '@/components/views/Dashboard/PenggunaEdit';
 
-const Pengguna_DetailPage = () => {
+const PenggunaEditPage = () => {
   return (
     <DashboardLayout
       title="Edit Profil"
@@ -12,4 +12,4 @@ const Pengguna_DetailPage = () => {
   );
 };
 
-export default Pengguna_DetailPage;
+export default PenggunaEditPage;
