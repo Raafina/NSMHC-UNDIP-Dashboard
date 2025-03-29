@@ -1,5 +1,5 @@
 import TableUI from '@/components/UI/Table';
-import { PROGRESS_PENGGUNA_HEADER_TABLE } from './Progress_Pengguna.constants';
+import { PROGRESS_PENGGUNA_HEADER_TABLE } from './ProgressPengguna.constants';
 import { Key, ReactNode, useCallback, useState, useMemo } from 'react';
 import dummyProgressPenggunaData from '@/dummyProgressPengguna.json';
 import { Checkbox } from '@heroui/react';
@@ -26,8 +26,8 @@ const ProgressPengguna = () => {
   const totalPages = Math.ceil(allData.length / perPage);
 
   const renderCell = useCallback(
-    (category: Record<string, unknown>, columnKey: Key) => {
-      const cellValue = category[columnKey as keyof typeof category];
+    (data: Record<string, unknown>, columnKey: Key) => {
+      const cellValue = data[columnKey as keyof typeof data];
 
       switch (columnKey) {
         case 'no':
@@ -55,7 +55,6 @@ const ProgressPengguna = () => {
     []
   );
 
-  // Handle page change
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
   };

@@ -45,7 +45,7 @@ const TableUI = (props: PropTypes) => {
     return (
       <div className="flex gap-2">
         <InputSearch />
-        <button className="rounded-full bg-brown-dark hover:bg-opacity-90 p-4">
+        <button className="rounded-full bg-primary hover:bg-opacity-90 p-4">
           <FaSearch className="text-brown-light " />
         </button>
       </div>

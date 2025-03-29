@@ -18,7 +18,7 @@ const DynamicBreadcrumbs = () => {
             href={href}
             isCurrent={isLast}
             classNames={{
-              item: `hover:underline ${isLast ? 'text-brown-normal' : 'text-brown-extreme-dark'}`,
+              item: `hover:underline ${isLast ? 'text-secondary' : 'text-brown-extreme-dark'}`,
             }}>
             {part.charAt(0).toUpperCase() + part.slice(1)}
           </BreadcrumbItem>

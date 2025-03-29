@@ -4,12 +4,15 @@ import dummyPenggunaData from '@/dummyPengguna.json';
 import { Key, ReactNode, useCallback } from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { RiEdit2Fill } from 'react-icons/ri';
-import { FaUnlockAlt } from 'react-icons/fa';
+import { FaUnlockAlt, FaEye } from 'react-icons/fa';
+import { useRouter } from 'next/router';
 
 const Pengguna = () => {
+  const { push } = useRouter();
+
   const renderCell = useCallback(
-    (category: Record<string, unknown>, columnKey: Key) => {
-      const cellValue = category[columnKey as keyof typeof category];
+    (data: Record<string, unknown>, columnKey: Key) => {
+      const cellValue = data[columnKey as keyof typeof data];
       switch (columnKey) {
         case 'foto':
           return (
@@ -36,10 +39,20 @@ const Pengguna = () => {
         case 'actions':
           return (
             <div className="flex gap-2 justify-center">
-              <button type="button" className="bg-blue p-1 rounded-lg">
+              <button type="button" className="bg-green p-1 rounded-lg">
+                <FaEye
+                  size={20}
+                  className="text-brown-lighter"
+                  onClick={() => push(`/dashboard/pengguna/${data.id}`)}
+                />
+              </button>
+              <button
+                type="button"
+                className="bg-blue p-1 rounded-lg"
+                onClick={() => push(`/dashboard/pengguna/edit/${data.id}`)}>
                 <RiEdit2Fill size={20} className="text-brown-lighter" />
               </button>
-              <button type="button" className="bg-brown-normal p-1 rounded-lg">
+              <button type="button" className="bg-secondary p-1 rounded-lg">
                 <FaUnlockAlt size={20} className="text-brown-lighter" />
               </button>
             </div>

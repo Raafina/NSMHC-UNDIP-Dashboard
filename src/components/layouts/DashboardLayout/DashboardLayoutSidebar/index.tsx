@@ -29,7 +29,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
         { 'translate-x-0': isOpen }
       )}>
       <div>
-        <div className="flex justify-center bg-brown-normal rounded-bl-3xl px-4 py-4 ">
+        <div className="flex justify-center bg-secondary rounded-bl-3xl px-4 py-4 ">
           <Image
             src="/images/logo/NSMHC_Logo.svg"
             alt="logo"
@@ -59,7 +59,7 @@ const DashboardLayoutSidebar = (props: PropTypes) => {
                 ' rounded my-1 px-6 h-12 flex justify-start text-base text-brown-light',
                 'data-[hover=true]:bg-brown-light data-[hover=true]:text-brown-extreme-dark',
                 {
-                  'bg-brown-normal text-brown-extreme-dark':
+                  'bg-secondary text-brown-extreme-dark':
                     router.pathname.startsWith(item.href),
                 }
               )}

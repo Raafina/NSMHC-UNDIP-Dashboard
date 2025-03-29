@@ -46,7 +46,7 @@ const Login = () => {
           </div>
           <div className="flex flex-col gap-4">
             <Controller
-              name="identifier"
+              name="email"
               control={control}
               render={({ field }) => (
                 <Input
@@ -57,8 +57,8 @@ const Login = () => {
                   placeholder="Masukkan email"
                   variant="bordered"
                   autoComplete="off"
-                  isInvalid={errors.identifier !== undefined}
-                  errorMessage={errors.identifier?.message}
+                  isInvalid={errors.email !== undefined}
+                  errorMessage={errors.email?.message}
                   classNames={{
                     label: 'font-semibold',
                   }}

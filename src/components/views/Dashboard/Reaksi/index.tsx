@@ -29,8 +29,8 @@ const Reaksi = () => {
   };
 
   const renderCell = useCallback(
-    (category: Record<string, unknown>, columnKey: Key) => {
-      const cellValue = category[columnKey as keyof typeof category];
+    (data: Record<string, unknown>, columnKey: Key) => {
+      const cellValue = data[columnKey as keyof typeof data];
       switch (columnKey) {
         case 'no':
           return (

@@ -1,15 +1,15 @@
 import DashboardLayout from '@/components/layouts/DashboardLayout';
-import Pengguna from '@/components/views/Dashboard/Pengguna';
+import PenggunaDetail from '@/components/views/Dashboard/PenggunaDetail';
 
-const PenggunaPage = () => {
+const PenggunaDetailPage = () => {
   return (
     <DashboardLayout
-      title="Pengguna"
+      title="Detail Pengguna"
       description="Halaman ini menampilkan Data Pengguna"
       type="admin">
-      <Pengguna />
+      <PenggunaDetail />
     </DashboardLayout>
   );
 };
 
-export default PenggunaPage;
+export default PenggunaDetailPage;

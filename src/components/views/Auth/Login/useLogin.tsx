@@ -10,8 +10,11 @@ import { signIn } from 'next-auth/react';
 // import { ToasterContext } from '@/contexts/ToasterContext';
 
 const loginSchema = yup.object().shape({
-  identifier: yup.string().required('Please input your email or password'),
-  password: yup.string().required('Please input your password'),
+  email: yup
+    .string()
+    .required('Masukkan email Anda')
+    .email('Email tidak valid'),
+  password: yup.string().required('Masukkan password Anda'),
 });
 
 const useLogin = () => {

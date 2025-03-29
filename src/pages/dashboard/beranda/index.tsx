@@ -1,5 +1,6 @@
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import Beranda from '@/components/views/Dashboard/Beranda';
+
 const BerandaPage = () => {
   return (
     <DashboardLayout
