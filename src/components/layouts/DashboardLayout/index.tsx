@@ -19,7 +19,7 @@ const DashboardLayout = (props: PropTypes) => {
   return (
     <>
       <PageHead title={title} />
-      <div className="max-w-screen-3xl 3xl:container flex bg-white ">
+      <div className="max-w-screen-3xl 3xl:container flex ">
         <DashboardLayoutSidebar sidebarItems={SIDEBAR_ADMIN} isOpen={open} />
         <div className="h-screen w-full overflow-y-auto ">
           <Navbar

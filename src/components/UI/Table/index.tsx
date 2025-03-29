@@ -60,8 +60,8 @@ const TableUI = (props: PropTypes) => {
             isCompact
             showControls
             color="primary"
-            page={10}
-            total={10}
+            page={1}
+            total={2}
             onChange={() => {}}
             loop
           />

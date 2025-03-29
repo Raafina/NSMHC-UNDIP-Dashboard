@@ -1,13 +1,13 @@
 const REAKSI_HEADER_TABLE = [
-  { name: 'No', key: 'id' },
+  { name: 'No', key: 'no' },
   { name: 'Nama Pengguna', key: 'name' },
-  { name: 'Pusing', key: 'anak' },
-  { name: 'Dada Sesak', key: 'last_job_husband' },
-  { name: 'Nyeri Dada', key: 'no_hp' },
-  { name: 'Kesemutan', key: 'actions' },
-  { name: 'Mual', key: 'actions' },
-  { name: 'Tubuh Gemetar', key: 'actions' },
-  { name: 'Lainnya', key: 'actions' },
+  { name: 'Pusing', key: 'pusing' },
+  { name: 'Dada Sesak', key: 'dada_sesak' },
+  { name: 'Nyeri Dada', key: 'nyeri_dada' },
+  { name: 'Kesemutan', key: 'kesemutan' },
+  { name: 'Mual', key: 'mual' },
+  { name: 'Tubuh Gemetar', key: 'tubuh_gemetar' },
+  { name: 'Lainnya', key: 'lainnya' },
 ];
 
 export { REAKSI_HEADER_TABLE };
