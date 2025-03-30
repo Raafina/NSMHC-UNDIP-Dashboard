@@ -11,8 +11,8 @@ const PenggunaEdit = () => {
     <div className="p-4">
       <div className="border-2 border-primary bg-white rounded-3xl p-5">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center mb-10">
+          <div className="flex flex-col">
+            <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center mb-5">
               Data Diri
             </h2>
             <Controller
@@ -33,6 +33,9 @@ const PenggunaEdit = () => {
                   classNames={{
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -54,6 +57,9 @@ const PenggunaEdit = () => {
                   classNames={{
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -76,6 +82,9 @@ const PenggunaEdit = () => {
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     trigger: 'border-2 !border-primary',
                     selectorIcon: 'text-primary text-2xl font-bold',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}>
                   {PENDIDIKAN_SELECT.map((pendidikan) => (
                     <SelectItem key={pendidikan.key}>
@@ -103,6 +112,9 @@ const PenggunaEdit = () => {
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     trigger: 'border-2 !border-primary',
                     selectorIcon: 'text-primary text-2xl font-bold',
+                    base: '!py-1',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
                   }}>
                   {PEKERJAAN_SELECT.map((pekerjaan) => (
                     <SelectItem key={pekerjaan.key}>
@@ -130,6 +142,9 @@ const PenggunaEdit = () => {
                   classNames={{
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -152,6 +167,9 @@ const PenggunaEdit = () => {
                   classNames={{
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -179,6 +197,9 @@ const PenggunaEdit = () => {
                   classNames={{
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -200,6 +221,9 @@ const PenggunaEdit = () => {
                   classNames={{
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -222,6 +246,9 @@ const PenggunaEdit = () => {
                     label: 'font-semibold !text-primary !top-[26px] !left-2 ',
                     trigger: 'border-2 !border-primary',
                     selectorIcon: 'text-primary text-2xl font-bold',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}>
                   {PENDIDIKAN_SELECT.map((pendidikan) => (
                     <SelectItem key={pendidikan.key}>
