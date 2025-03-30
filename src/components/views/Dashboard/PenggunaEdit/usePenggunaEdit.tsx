@@ -23,10 +23,14 @@ const PenggunaEditSchema = yup.object().shape({
 });
 
 const usePenggunaEdit = () => {
-  const { control } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(PenggunaEditSchema),
   });
-  return { control };
+  return { control, errors, handleSubmit };
 };
 
 export default usePenggunaEdit;

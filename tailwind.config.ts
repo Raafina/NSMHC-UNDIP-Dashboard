@@ -13,6 +13,7 @@ export default {
       colors: {
         primary: "#B97345",
         secondary: "#F2A263",
+        success: "#00A846",
         'brown-extreme-dark': "#2C2C2C",
         'brown-very-dark': "#8D4D24",
         'brown-darker': "#454545",
@@ -21,7 +22,6 @@ export default {
         'white': "#FFFFFF",
         'white-dark': "#F4F4F4",
         'blue': "#609FF1",
-        'green': "#00A846",
       },
     },
   },

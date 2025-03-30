@@ -1,5 +1,5 @@
 import PageHead from '@/components/commons/PageHead';
-import BreadcrumbsUI from '@/components/UI/BreadCrumbs';
+import BreadcrumbsUI from '@/components/UI/Breadcrumbs';
 import { ReactNode, useState } from 'react';
 import DashboardLayoutSidebar from './DashboardLayoutSidebar';
 import { SIDEBAR_ADMIN } from './DashboardLayout.constans';

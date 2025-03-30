@@ -39,7 +39,7 @@ const Pengguna = () => {
         case 'actions':
           return (
             <div className="flex gap-2 justify-center">
-              <button type="button" className="bg-green p-1 rounded-lg">
+              <button type="button" className="bg-success p-1 rounded-lg">
                 <FaEye
                   size={20}
                   className="text-brown-lighter"
