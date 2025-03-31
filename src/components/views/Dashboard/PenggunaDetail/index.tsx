@@ -3,7 +3,7 @@ import { IoPersonCircleSharp } from 'react-icons/io5';
 
 const PenggunaDetail = () => {
   return (
-    <div className="p-4">
+    <section>
       <div className="border-2 border-primary bg-white rounded-3xl p-5">
         <div className="flex flex-col items-center justify-center">
           <IoPersonCircleSharp className="text-blue" size={160} />
@@ -47,7 +47,7 @@ const PenggunaDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

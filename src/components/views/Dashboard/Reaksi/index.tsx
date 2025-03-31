@@ -58,7 +58,7 @@ const Reaksi = () => {
   );
 
   return (
-    <div className="p-4">
+    <section>
       <TableUI
         columns={REAKSI_HEADER_TABLE}
         data={processedData}
@@ -66,7 +66,7 @@ const Reaksi = () => {
         renderCell={renderCell}
         totalPages={totalPages}
       />
-    </div>
+    </section>
   );
 };
 

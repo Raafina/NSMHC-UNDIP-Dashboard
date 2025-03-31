@@ -52,7 +52,10 @@ const Pengguna = () => {
                 onClick={() => push(`/dashboard/pengguna/edit/${data.id}`)}>
                 <RiEdit2Fill size={20} className="text-brown-lighter" />
               </button>
-              <button type="button" className="bg-secondary p-1 rounded-lg">
+              <button
+                type="button"
+                className="bg-secondary p-1 rounded-lg"
+                onClick={() => push(`/dashboard/pengguna/password/${data.id}`)}>
                 <FaUnlockAlt size={20} className="text-brown-lighter" />
               </button>
             </div>
@@ -65,7 +68,7 @@ const Pengguna = () => {
   );
 
   return (
-    <div className="p-4">
+    <section>
       <TableUI
         columns={PENGGUNA_HEADER_TABLE}
         data={dummyPenggunaData}
@@ -73,7 +76,7 @@ const Pengguna = () => {
         renderCell={renderCell}
         totalPages={10}
       />
-    </div>
+    </section>
   );
 };
 

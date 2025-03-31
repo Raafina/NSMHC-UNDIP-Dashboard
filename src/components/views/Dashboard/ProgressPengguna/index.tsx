@@ -60,7 +60,7 @@ const ProgressPengguna = () => {
   };
 
   return (
-    <div className="p-4">
+    <section>
       <TableUI
         columns={PROGRESS_PENGGUNA_HEADER_TABLE}
         data={processedData}
@@ -68,7 +68,7 @@ const ProgressPengguna = () => {
         renderCell={renderCell}
         totalPages={totalPages}
       />
-    </div>
+    </section>
   );
 };
 

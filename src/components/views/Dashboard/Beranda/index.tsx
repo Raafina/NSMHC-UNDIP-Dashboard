@@ -5,7 +5,7 @@ import { FaBaby } from 'react-icons/fa';
 
 const Beranda = () => {
   return (
-    <section className="p-4 flex flex-col gap-2 md:gap-4 ">
+    <section className="flex flex-col gap-2 md:gap-4 ">
       <div className="grid grid-cols-3 gap-2 md:gap-4">
         <div className="flex flex-row items-center p-4 md:p-9  rounded-2xl bg-brown-lighter text-brown-extreme-dark">
           <FaUser className="w-8 h-8 md:w-16 md:h-16" />

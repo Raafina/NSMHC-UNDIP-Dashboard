@@ -21,7 +21,7 @@ const DashboardLayout = (props: PropTypes) => {
       <PageHead title={title} />
       <div className="max-w-screen-3xl 3xl:container flex bg-gradient-to-t from-[#FFE3CE] to-white ">
         <DashboardLayoutSidebar sidebarItems={SIDEBAR_ADMIN} isOpen={open} />
-        <div className="h-screen w-full overflow-y-auto ">
+        <div className="h-screen w-full overflow-y-auto">
           <Navbar
             className="flex justify-between bg-transparent  shadow-md px-3 py-5"
             isBlurred={false}
@@ -42,7 +42,7 @@ const DashboardLayout = (props: PropTypes) => {
               className="lg:hidden text-brown-extreme-dark px-8 "
             />
           </Navbar>
-          {children}
+          <div className="p-4">{children}</div>
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Input, Spinner } from '@heroui/react';
+import { Button, Input, Spinner } from '@heroui/react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import Image from 'next/image';
 import useLogin from './useLogin';

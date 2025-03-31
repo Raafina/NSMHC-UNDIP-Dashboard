@@ -8,11 +8,11 @@ const PenggunaEdit = () => {
   const { control, errors, handleSubmit } = usePenggunaEdit();
 
   return (
-    <div className="p-4">
+    <section>
       <div className="border-2 border-primary bg-white rounded-3xl p-5">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col">
-            <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center mb-5">
+            <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center">
               Data Diri
             </h2>
             <Controller
@@ -24,7 +24,7 @@ const PenggunaEdit = () => {
                   type="text"
                   label="Nama Lengkap"
                   labelPlacement="outside"
-                  placeholder="Masukkan email"
+                  placeholder="Masukkan Nama Lengkap"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.nama_lengkap_pengguna !== undefined}
@@ -72,7 +72,7 @@ const PenggunaEdit = () => {
                   {...field}
                   label="Pendidikan Terakhir"
                   labelPlacement="outside"
-                  placeholder="Masukkan pendidikan terakhir"
+                  placeholder="Masukkan Pendidikan Terakhir"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.pendidikan_terakhir_pengguna !== undefined}
@@ -102,7 +102,7 @@ const PenggunaEdit = () => {
                   {...field}
                   label="Pekerjaan Terakhir"
                   labelPlacement="outside"
-                  placeholder="Masukkan pekerjaan terakhir"
+                  placeholder="Masukkan Pekerjaan Terakhir"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.pekerjaan_terakhir_pengguna !== undefined}
@@ -133,7 +133,7 @@ const PenggunaEdit = () => {
                   type="string"
                   label="Alamat"
                   labelPlacement="outside"
-                  placeholder="Masukkan alamat"
+                  placeholder="Masukkan Alamat"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.alamat !== undefined}
@@ -176,7 +176,7 @@ const PenggunaEdit = () => {
             />
           </div>
           <div>
-            <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center mb-10">
+            <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center mb-5">
               Data Anak
             </h2>
             <Controller
@@ -236,7 +236,7 @@ const PenggunaEdit = () => {
                   {...field}
                   label="Pendidikan Terakhir"
                   labelPlacement="outside"
-                  placeholder="Masukkan pendidikan terakhir"
+                  placeholder="Masukkan Pendidikan Terakhir"
                   variant="bordered"
                   autoComplete="off"
                   isInvalid={errors.pendidikan_terakhir_anak !== undefined}
@@ -262,7 +262,7 @@ const PenggunaEdit = () => {
           <ButtonSave onPress={handleSubmit(() => '')} />
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
