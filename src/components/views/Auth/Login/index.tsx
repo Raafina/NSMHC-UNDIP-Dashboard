@@ -9,12 +9,12 @@ import { MdAdminPanelSettings } from 'react-icons/md';
 const Login = () => {
   const {
     isVisible,
-    toggleVisibility,
     control,
-    handleSubmit,
-    // handleLogin,
-    // isPendingLogin,
+    isPendingLogin,
     errors,
+    toggleVisibility,
+    handleSubmit,
+    handleLogin,
   } = useLogin();
   return (
     <div className="flex w-full flex-col items-center justify-center gap-10 md:flex-row lg:gap-60">
@@ -29,17 +29,17 @@ const Login = () => {
         <p className="text-sm">Nursing Students Mother Heart Connection</p>
       </div>
       <div className="border rounded-3xl bg-white p-6 shadow-lg">
-        {/* {errors.root && (
-            <p className="mb-2 font-medium text-danger">
-              {errors?.root?.message}
-            </p>
-          )} */}
+        {errors.root && (
+          <p className="mb-2 font-medium text-danger">
+            {errors?.root?.message}
+          </p>
+        )}
         <form
           className={cn(
             'flex w-80 flex-col justify-center',
             Object.keys(errors).length > 0
           )}
-          onSubmit={handleSubmit(() => {}) /* handleLogin */}>
+          onSubmit={handleSubmit(handleLogin)}>
           <div className="mb-2 flex flex-col items-center">
             <MdAdminPanelSettings size={100} />
             <h1 className="text-3xl text-center font-bold">Admin</h1>

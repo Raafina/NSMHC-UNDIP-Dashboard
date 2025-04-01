@@ -1,5 +1,5 @@
 import Toaster from '@/components/UI/Toaster';
-import { defaultToaster, ToasterContext } from '@/context/ToasterContext';
+import { defaultToaster, ToasterContext } from '@/contexts/ToasterContext';
 import { cn } from '@/utils/cn';
 import { ReactNode, useContext, useEffect } from 'react';
 import { Poppins } from 'next/font/google';

@@ -1,5 +1,5 @@
 import AppShell from '@/components/commons/AppShell';
-import { ToasterProvider } from '@/context/ToasterContext';
+import { ToasterProvider } from '@/contexts/ToasterContext';
 import { onErrorHander } from '@/libs/axios/reponseHandler';
 import '@/styles/globals.css';
 import { HeroUIProvider } from '@heroui/react';
