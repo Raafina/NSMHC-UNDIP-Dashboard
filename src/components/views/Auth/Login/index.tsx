@@ -44,7 +44,7 @@ const Login = () => {
             <MdAdminPanelSettings size={100} />
             <h1 className="text-3xl text-center font-bold">Admin</h1>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             <Controller
               name="email"
               control={control}
@@ -60,7 +60,11 @@ const Login = () => {
                   isInvalid={errors.email !== undefined}
                   errorMessage={errors.email?.message}
                   classNames={{
-                    label: 'font-semibold',
+                    label: 'font-semibold !text-primary !top-[26px] !left-2 ',
+                    inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                 />
               )}
@@ -80,7 +84,11 @@ const Login = () => {
                   isInvalid={errors.password !== undefined}
                   errorMessage={errors.password?.message}
                   classNames={{
-                    label: 'font-semibold',
+                    label: 'font-semibold !text-primary !top-[26px] !left-2 ',
+                    inputWrapper: 'border-2 border-primary',
+                    helperWrapper: '!py-0 !ps-2.5',
+                    errorMessage: 'text-small',
+                    base: '!py-1',
                   }}
                   endContent={
                     <button
@@ -97,7 +105,12 @@ const Login = () => {
                 />
               )}
             />
-            <Button color="secondary" size="lg" type="submit" radius="full">
+            <Button
+              color="secondary"
+              size="lg"
+              type="submit"
+              radius="full"
+              className="mt-3">
               {/* {isPendingLogin ? <Spinner color="white" size="sm" /> : 'Login'} */}
               Masuk
             </Button>
