@@ -111,8 +111,7 @@ const Login = () => {
               type="submit"
               radius="full"
               className="mt-3">
-              {isPendingLogin ? <Spinner color="white" size="sm" /> : 'Login'}
-              Masuk
+              {isPendingLogin ? <Spinner color="white" size="sm" /> : 'Masuk'}
             </Button>
           </div>
         </form>
