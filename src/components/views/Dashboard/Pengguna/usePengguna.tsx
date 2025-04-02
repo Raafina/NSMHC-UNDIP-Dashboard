@@ -13,7 +13,6 @@ const usePengguna = () => {
       params += `&search=${currentSearch}`;
     }
     const res = await penggunaServices.getAllPengguna(params);
-    console.log('res', res);
     const data = res.data.data;
     return data;
   };
