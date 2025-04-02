@@ -1,14 +1,25 @@
 import TableUI from '@/components/UI/Table';
 import { PENGGUNA_HEADER_TABLE } from './Pengguna.constants';
-import dummyPenggunaData from '@/dummyPengguna.json';
-import { Key, ReactNode, useCallback } from 'react';
+import { Key, ReactNode, useCallback, useEffect } from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { RiEdit2Fill } from 'react-icons/ri';
 import { FaUnlockAlt, FaEye } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import usePengguna from './usePengguna';
+import useChangeUrl from '@/hooks/useChangeUrl';
 
 const Pengguna = () => {
-  const { push } = useRouter();
+  const { dataAllPengguna, isLoadingAllPengguna, isRefetchAllPengguna } =
+    usePengguna();
+  const { push, query, isReady } = useRouter();
+
+  const { setUrl } = useChangeUrl();
+
+  useEffect(() => {
+    if (isReady) {
+      setUrl();
+    }
+  }, [isReady]);
 
   const renderCell = useCallback(
     (data: Record<string, unknown>, columnKey: Key) => {
@@ -64,18 +75,21 @@ const Pengguna = () => {
           return cellValue as ReactNode;
       }
     },
-    []
+    [push]
   );
 
   return (
     <section>
-      <TableUI
-        columns={PENGGUNA_HEADER_TABLE}
-        data={dummyPenggunaData}
-        emptyContent="Data tidak ditemukan"
-        renderCell={renderCell}
-        totalPages={10}
-      />
+      {Object.keys(query).length > 0 && (
+        <TableUI
+          columns={PENGGUNA_HEADER_TABLE}
+          data={dataAllPengguna?.data_user || []}
+          isLoading={isLoadingAllPengguna || isRefetchAllPengguna}
+          emptyContent="Data tidak ditemukan"
+          renderCell={renderCell}
+          totalPages={dataAllPengguna?.last_page}
+        />
+      )}
     </section>
   );
 };
