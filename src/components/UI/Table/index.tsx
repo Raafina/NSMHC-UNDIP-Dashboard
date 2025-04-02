@@ -1,4 +1,5 @@
 import useChangeUrl from '@/hooks/useChangeUrl';
+import { useState } from 'react';
 import { cn } from '@/utils/cn';
 import {
   Pagination,
@@ -10,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from '@heroui/react';
-import InputSearch from '../InputSearch';
+import { Input } from '@heroui/react';
 import { Key, ReactNode, useMemo } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
@@ -25,6 +26,7 @@ interface PropTypes {
   renderCell: (item: Record<string, unknown>, columnKey: Key) => ReactNode;
   showSearch?: boolean;
   totalPages: number;
+  setSearchQuery: (query: string) => void;
 }
 
 const TableUI = (props: PropTypes) => {
@@ -36,6 +38,7 @@ const TableUI = (props: PropTypes) => {
     isLoading,
     onClickButtonTopContent,
     renderCell,
+    setSearchQuery,
     totalPages,
   } = props;
 
@@ -44,8 +47,24 @@ const TableUI = (props: PropTypes) => {
   const TopContent = useMemo(() => {
     return (
       <div className="flex gap-2">
-        <InputSearch />
-        <button className="rounded-full bg-primary hover:bg-opacity-90 p-4">
+        <Input
+          type="text"
+          placeholder="Masukkan email"
+          radius="full"
+          variant="bordered"
+          autoComplete="off"
+          onChange={(e) => setSearchQuery(e.target.value)}
+          classNames={{
+            label: 'font-semibold !text-primary !top-[26px] !left-2 ',
+            inputWrapper: 'border-2 border-primary bg-white',
+            helperWrapper: '!py-0 !ps-2.5',
+            errorMessage: 'text-small',
+            base: '!py-1',
+          }}
+        />
+        <button
+          className="rounded-full bg-primary hover:bg-opacity-90 p-4"
+          onClick={onClickButtonTopContent}>
           <FaSearch className="text-brown-light " />
         </button>
       </div>
@@ -67,7 +86,7 @@ const TableUI = (props: PropTypes) => {
         )}
       </div>
     );
-  }, [totalPages]);
+  }, [totalPages, currentPage, handleChangePage]);
 
   return (
     <Table

@@ -7,12 +7,18 @@ import { FaUnlockAlt, FaEye } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import usePengguna from './usePengguna';
 import useChangeUrl from '@/hooks/useChangeUrl';
-
+import { useState } from 'react';
 const Pengguna = () => {
-  const { dataAllPengguna, isLoadingAllPengguna, isRefetchAllPengguna } =
-    usePengguna();
-  const { push, query, isReady } = useRouter();
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const {
+    dataAllPengguna,
+    isLoadingAllPengguna,
+    isRefetchAllPengguna,
+    handleSearch,
+  } = usePengguna();
+
+  const { push, query, isReady } = useRouter();
   const { setUrl } = useChangeUrl();
 
   useEffect(() => {
@@ -88,6 +94,8 @@ const Pengguna = () => {
           emptyContent="Data tidak ditemukan"
           renderCell={renderCell}
           totalPages={dataAllPengguna?.last_page}
+          onClickButtonTopContent={() => handleSearch(searchQuery)}
+          setSearchQuery={setSearchQuery}
         />
       )}
     </section>

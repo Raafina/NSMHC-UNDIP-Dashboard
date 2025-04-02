@@ -13,10 +13,18 @@ const usePengguna = () => {
       params += `&search=${currentSearch}`;
     }
     const res = await penggunaServices.getAllPengguna(params);
-    console.log(res, 'res');
+    console.log('res', res);
     const data = res.data.data;
-    console.log(data);
     return data;
+  };
+
+  const handleSearch = (search: string) => {
+    router.push({
+      query: {
+        search: search || undefined,
+        page: 1,
+      },
+    });
   };
 
   const {
@@ -24,11 +32,16 @@ const usePengguna = () => {
     isLoading: isLoadingAllPengguna,
     isRefetching: isRefetchAllPengguna,
   } = useQuery({
-    queryKey: ['dataAllPengguna', currentPage],
+    queryKey: ['dataAllPengguna', currentPage, currentSearch],
     queryFn: () => getAllPengguna(),
     enabled: router.isReady && !!currentPage,
   });
-  return { dataAllPengguna, isLoadingAllPengguna, isRefetchAllPengguna };
+  return {
+    dataAllPengguna,
+    isLoadingAllPengguna,
+    isRefetchAllPengguna,
+    handleSearch,
+  };
 };
 
 export default usePengguna;
