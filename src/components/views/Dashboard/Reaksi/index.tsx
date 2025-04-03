@@ -5,29 +5,6 @@ import dummyReaksiData from '@/dummyReaksi.json';
 import { Checkbox } from '@heroui/react';
 
 const Reaksi = () => {
-  const [page, setPage] = useState(1);
-  const perPage = 10;
-
-  const allData = dummyReaksiData;
-  const startIndex = (page - 1) * perPage;
-
-  const processedData = useMemo(() => {
-    return allData
-      .slice(startIndex, startIndex + perPage)
-      .map((item, index) => {
-        return {
-          ...item,
-          no: startIndex + index + 1,
-        };
-      });
-  }, [allData, startIndex, perPage]);
-
-  const totalPages = Math.ceil(allData.length / perPage);
-
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
-
   const renderCell = useCallback(
     (data: Record<string, unknown>, columnKey: Key) => {
       const cellValue = data[columnKey as keyof typeof data];
@@ -61,10 +38,11 @@ const Reaksi = () => {
     <section>
       <TableUI
         columns={REAKSI_HEADER_TABLE}
-        data={processedData}
+        data={dummyReaksiData}
         emptyContent="Data tidak ditemukan"
         renderCell={renderCell}
-        totalPages={totalPages}
+        totalPages={2}
+        setSearchQuery={() => {}}
       />
     </section>
   );

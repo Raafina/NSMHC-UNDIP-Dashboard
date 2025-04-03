@@ -1,13 +1,13 @@
 import TableUI from '@/components/UI/Table';
 import { PENGGUNA_HEADER_TABLE } from './Pengguna.constants';
-import { Key, ReactNode, useCallback, useEffect } from 'react';
+import { Key, ReactNode, useCallback, useEffect, useState } from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { RiEdit2Fill } from 'react-icons/ri';
 import { FaUnlockAlt, FaEye } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import usePengguna from './usePengguna';
 import useChangeUrl from '@/hooks/useChangeUrl';
-import { useState } from 'react';
+
 const Pengguna = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 

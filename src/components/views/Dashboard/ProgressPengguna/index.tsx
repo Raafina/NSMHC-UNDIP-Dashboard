@@ -1,39 +1,35 @@
 import TableUI from '@/components/UI/Table';
 import { PROGRESS_PENGGUNA_HEADER_TABLE } from './ProgressPengguna.constants';
-import { Key, ReactNode, useCallback, useState, useMemo } from 'react';
-import dummyProgressPenggunaData from '@/dummyProgressPengguna.json';
+import { Key, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Checkbox } from '@heroui/react';
+import { useRouter } from 'next/router';
+import useProgressPengguna from './useProgressPengguna';
+import useChangeUrl from '@/hooks/useChangeUrl';
 
 const ProgressPengguna = () => {
-  const [page, setPage] = useState(1);
-  const perPage = 10;
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const allData = dummyProgressPenggunaData;
+  const {
+    dataAllProgressPengguna,
+    isLoadingAllProgressPengguna,
+    isRefetchAllProgressPengguna,
+    handleSearch,
+  } = useProgressPengguna();
 
-  const startIndex = (page - 1) * perPage;
+  const { push, query, isReady } = useRouter();
+  const { setUrl } = useChangeUrl();
 
-  const processedData = useMemo(() => {
-    return allData
-      .slice(startIndex, startIndex + perPage)
-      .map((item, index) => {
-        return {
-          ...item,
-          no: startIndex + index + 1,
-        };
-      });
-  }, [allData, startIndex, perPage]);
-
-  const totalPages = Math.ceil(allData.length / perPage);
+  useEffect(() => {
+    if (isReady) {
+      setUrl();
+    }
+  }, [isReady]);
 
   const renderCell = useCallback(
     (data: Record<string, unknown>, columnKey: Key) => {
       const cellValue = data[columnKey as keyof typeof data];
 
       switch (columnKey) {
-        case 'no':
-          return (
-            <div className="w-[50px] lg:w-full">{cellValue as ReactNode}</div>
-          );
         case 'name':
           return (
             <div className="w-[150px] lg:w-full">
@@ -52,22 +48,24 @@ const ProgressPengguna = () => {
           );
       }
     },
-    []
+    [push]
   );
-
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
-
   return (
     <section>
-      <TableUI
-        columns={PROGRESS_PENGGUNA_HEADER_TABLE}
-        data={processedData}
-        emptyContent="Data tidak ditemukan"
-        renderCell={renderCell}
-        totalPages={totalPages}
-      />
+      {Object.keys(query).length > 0 && (
+        <TableUI
+          columns={PROGRESS_PENGGUNA_HEADER_TABLE}
+          data={dataAllProgressPengguna?.data_user || []}
+          isLoading={
+            isLoadingAllProgressPengguna || isRefetchAllProgressPengguna
+          }
+          emptyContent="Data tidak ditemukan"
+          renderCell={renderCell}
+          totalPages={dataAllProgressPengguna?.last_page}
+          setSearchQuery={setSearchQuery}
+          onClickButtonTopContent={() => handleSearch(searchQuery)}
+        />
+      )}
     </section>
   );
 };

@@ -1,19 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import penggunaServices from '@/services/pengguna.service';
+import contentServices from '@/services/content.service';
 import useChangeUrl from '@/hooks/useChangeUrl';
 
-const usePengguna = () => {
+const useProgressPengguna = () => {
   const router = useRouter();
 
   const { currentSearch, currentPage } = useChangeUrl();
-  const getAllPengguna = async () => {
+  const getAllProgressPengguna = async () => {
     let params = `&page=${currentPage}`;
     if (currentSearch) {
       params += `&search=${currentSearch}`;
     }
-    const res = await penggunaServices.getAllPengguna(params);
+    const res = await contentServices.getAllContentProgress(params);
     const data = res.data.data;
+    console.log(data, 'data');
     return data;
   };
 
@@ -27,21 +28,21 @@ const usePengguna = () => {
   };
 
   const {
-    data: dataAllPengguna,
-    isLoading: isLoadingAllPengguna,
-    isRefetching: isRefetchAllPengguna,
+    data: dataAllProgressPengguna,
+    isLoading: isLoadingAllProgressPengguna,
+    isRefetching: isRefetchAllProgressPengguna,
   } = useQuery({
-    queryKey: ['dataAllPengguna', currentPage, currentSearch],
-    queryFn: () => getAllPengguna(),
+    queryKey: ['dataAllProgressPengguna', currentPage, currentSearch],
+    queryFn: () => getAllProgressPengguna(),
     enabled: router.isReady && !!currentPage,
   });
 
   return {
-    dataAllPengguna,
-    isLoadingAllPengguna,
-    isRefetchAllPengguna,
+    dataAllProgressPengguna,
+    isLoadingAllProgressPengguna,
+    isRefetchAllProgressPengguna,
     handleSearch,
   };
 };
 
-export default usePengguna;
+export default useProgressPengguna;
