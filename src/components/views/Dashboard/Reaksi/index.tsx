@@ -1,10 +1,30 @@
 import TableUI from '@/components/UI/Table';
 import { REAKSI_HEADER_TABLE } from './Reaksi.contants';
-import { Key, ReactNode, useCallback, useMemo, useState } from 'react';
-import dummyReaksiData from '@/dummyReaksi.json';
+import { Key, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Checkbox } from '@heroui/react';
+import { useRouter } from 'next/router';
+import useReaksi from './useReaksi';
+import useChangeUrl from '@/hooks/useChangeUrl';
 
 const Reaksi = () => {
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const {
+    dataAllReaksi,
+    isLoadingAllReaksi,
+    isRefetchAllReaksi,
+    handleSearch,
+  } = useReaksi();
+
+  const { push, query, isReady } = useRouter();
+  const { setUrl } = useChangeUrl();
+
+  useEffect(() => {
+    if (isReady) {
+      setUrl();
+    }
+  }, [isReady]);
+
   const renderCell = useCallback(
     (data: Record<string, unknown>, columnKey: Key) => {
       const cellValue = data[columnKey as keyof typeof data];
@@ -31,19 +51,23 @@ const Reaksi = () => {
           );
       }
     },
-    []
+    [push]
   );
 
   return (
     <section>
-      <TableUI
-        columns={REAKSI_HEADER_TABLE}
-        data={dummyReaksiData}
-        emptyContent="Data tidak ditemukan"
-        renderCell={renderCell}
-        totalPages={2}
-        setSearchQuery={() => {}}
-      />
+      {Object.keys(query).length > 0 && (
+        <TableUI
+          columns={REAKSI_HEADER_TABLE}
+          data={dataAllReaksi?.data_user || []}
+          isLoading={isLoadingAllReaksi || isRefetchAllReaksi}
+          emptyContent="Data tidak ditemukan"
+          renderCell={renderCell}
+          totalPages={dataAllReaksi?.last_page}
+          setSearchQuery={setSearchQuery}
+          onClickButtonTopContent={() => handleSearch(searchQuery)}
+        />
+      )}
     </section>
   );
 };
