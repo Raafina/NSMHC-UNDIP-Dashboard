@@ -1,49 +1,91 @@
-import Image from 'next/image';
+import { Skeleton } from '@heroui/react';
+import { useState } from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
+import usePenggunaDetail from './usePenggunaDetail';
 
 const PenggunaDetail = () => {
+  const { dataDetailPengguna } = usePenggunaDetail();
+  const isLoaded = !!dataDetailPengguna;
+
+  const DetailItem = ({ label, value }: { label: string; value?: string }) => (
+    <Skeleton isLoaded={isLoaded} className="w-full rounded-full">
+      <div className="grid grid-cols-[100px_40px_1fr] gap-x-2 w-full">
+        <div className="font-medium">{label}</div>
+        <div className="text-center">:</div>
+        <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+          {value || '-'}
+        </div>
+      </div>
+    </Skeleton>
+  );
+
   return (
     <section>
       <div className="border-2 border-primary bg-white rounded-3xl p-5">
-        <div className="flex flex-col items-center justify-center">
-          <IoPersonCircleSharp className="text-blue" size={160} />
-          <h3 className="font-medium text-2xl">Ki Hajar Dewantoro</h3>
-          <p className="font-medium text-xl">08123456789</p>
+        {/* Profile Header */}
+        <div className="flex flex-col items-center justify-center mb-2">
+          <Skeleton
+            isLoaded={isLoaded}
+            className="rounded-full h-40 w-40 flex items-center justify-center">
+            {isLoaded ? (
+              <IoPersonCircleSharp className="text-blue" size={160} />
+            ) : null}
+          </Skeleton>
+
+          <Skeleton
+            isLoaded={isLoaded}
+            className="w-64 flex justify-center rounded-full h-7 mb-2">
+            {isLoaded ? (
+              <h3 className="font-medium text-2xl">
+                {dataDetailPengguna?.name}
+              </h3>
+            ) : null}
+          </Skeleton>
+
+          <Skeleton
+            isLoaded={isLoaded}
+            className="w-48 flex justify-center rounded-full h-7">
+            {isLoaded ? (
+              <p className="font-medium text-xl">
+                {dataDetailPengguna?.user_profile?.no_hp}
+              </p>
+            ) : null}
+          </Skeleton>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:px-20 pt-6">
-          <div className="grid grid-cols-[max-content_10px_auto] gap-x-2 w-fit font-medium">
-            <div>Usia</div>
-            <div>:</div>
-            <div>60</div>
 
-            <div>Pendidikan</div>
-            <div>:</div>
-            <div>S3</div>
-
-            <div>Pekerjaan</div>
-            <div>:</div>
-            <div>Pegawai Negeri</div>
-
-            <div>Alamat</div>
-            <div>:</div>
-            <div>Desa Pahlawan, Kecamatan Pahlawan, Kabupaten Pahlawan</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:px-10 lg:px-32 pt-4">
+          <div className="flex flex-col gap-y-3 w-full">
+            <DetailItem
+              label="Usia"
+              value={dataDetailPengguna?.user_profile?.age}
+            />
+            <DetailItem
+              label="Pendidikan"
+              value={dataDetailPengguna?.user_profile?.last_education}
+            />
+            <DetailItem
+              label="Pekerjaan"
+              value={dataDetailPengguna?.user_profile?.last_job}
+            />
+            <DetailItem
+              label="Alamat"
+              value={dataDetailPengguna?.user_profile?.address}
+            />
           </div>
-          <div className="grid grid-cols-[max-content_10px_auto] gap-x-2 w-fit font-medium">
-            <div>Nama Anak</div>
-            <div>:</div>
-            <div>Udin Supratman</div>
 
-            <div>Usia</div>
-            <div>:</div>
-            <div>30</div>
-
-            <div>Pendidikan</div>
-            <div>:</div>
-            <div>S1</div>
-
-            <div>Pekerjaan</div>
-            <div>:</div>
-            <div>Pegawai negeri</div>
+          <div className="flex flex-col gap-y-3 w-full">
+            <DetailItem
+              label="Nama Anak"
+              value={dataDetailPengguna?.user_child?.name}
+            />
+            <DetailItem
+              label="Usia"
+              value={dataDetailPengguna?.user_child?.age}
+            />
+            <DetailItem
+              label="Pendidikan"
+              value={dataDetailPengguna?.user_child?.last_education}
+            />
           </div>
         </div>
       </div>
