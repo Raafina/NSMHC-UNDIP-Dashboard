@@ -1,19 +1,65 @@
-import usePenggunaEdit from './usePenggunaEdit';
 import { Controller } from 'react-hook-form';
-import { Input, Select, SelectItem } from '@heroui/react';
+import { Button, Input, Select, SelectItem } from '@heroui/react';
 import { NumberInput } from '@heroui/number-input';
 import { PENDIDIKAN_SELECT, PEKERJAAN_SELECT } from './PenggunaEdit.constants';
 import ButtonSave from '@/components/UI/ButtonSave';
+import usePenggunaEdit from './usePenggunaEdit';
+import usePenggunaDetail from '../PenggunaDetail/usePenggunaDetail';
+import { useEffect } from 'react';
 const PenggunaEdit = () => {
-  const { control, errors, handleSubmit } = usePenggunaEdit();
+  const { dataDetailPengguna } = usePenggunaDetail();
+  const {
+    control,
+    errors,
+    handleSubmit,
+    setValue,
+    handleUpdatePengguna,
+    isPendingUpdatePengguna,
+  } = usePenggunaEdit();
+
+  useEffect(() => {
+    if (!!dataDetailPengguna) {
+      setValue('nama_lengkap_pengguna', dataDetailPengguna?.name);
+      setValue('usia_pengguna', dataDetailPengguna?.user_profile?.age);
+      setValue(
+        'pendidikan_terakhir_pengguna',
+        dataDetailPengguna?.user_profile?.last_education
+      );
+      setValue(
+        'pekerjaan_terakhir_pengguna',
+        dataDetailPengguna?.user_profile?.last_job
+      );
+      setValue('alamat', dataDetailPengguna?.user_profile?.address);
+      setValue('no_hp', dataDetailPengguna?.user_profile?.no_hp);
+      setValue('nama_lengkap_anak', dataDetailPengguna?.user_child?.name);
+      setValue('usia_anak', dataDetailPengguna?.user_child?.age);
+      setValue(
+        'pendidikan_terakhir_anak',
+        dataDetailPengguna?.user_child?.last_education
+      );
+    }
+  });
+
+  // const onSubmit = (data) => {
+  //   console.log('clicked');
+  //   console.log('Form data:', data);
+  //   console.log('Errors:', errors);
+  //   handleUpdatePengguna(data);
+  // };
+
+  // const onError = (errors) => {
+  //   console.log('Form has errors:', errors);
+  // };
 
   return (
     <section>
       <div className="border-2 border-primary bg-white rounded-3xl p-5">
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form
+          onSubmit={handleSubmit(handleUpdatePengguna)}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col">
             <h2 className="bg-primary font-semibold text-xl md:text-2xl text-white px-5 py-2 text-center">
-              Data Diri
+              Data Diriss
             </h2>
             <Controller
               name="nama_lengkap_pengguna"
@@ -75,6 +121,7 @@ const PenggunaEdit = () => {
                   placeholder="Masukkan Pendidikan Terakhir"
                   variant="bordered"
                   autoComplete="off"
+                  items={PENDIDIKAN_SELECT}
                   isInvalid={errors.pendidikan_terakhir_pengguna !== undefined}
                   errorMessage={errors.pendidikan_terakhir_pengguna?.message}
                   className="pb-2"
@@ -86,11 +133,9 @@ const PenggunaEdit = () => {
                     errorMessage: 'text-small',
                     base: '!py-1',
                   }}>
-                  {PENDIDIKAN_SELECT.map((pendidikan) => (
-                    <SelectItem key={pendidikan.key}>
-                      {pendidikan.label}
-                    </SelectItem>
-                  ))}
+                  {(PENDIDIKAN_SELECT) => (
+                    <SelectItem>{PENDIDIKAN_SELECT.label}</SelectItem>
+                  )}
                 </Select>
               )}
             />
@@ -105,6 +150,7 @@ const PenggunaEdit = () => {
                   placeholder="Masukkan Pekerjaan Terakhir"
                   variant="bordered"
                   autoComplete="off"
+                  items={PEKERJAAN_SELECT}
                   isInvalid={errors.pekerjaan_terakhir_pengguna !== undefined}
                   errorMessage={errors.pekerjaan_terakhir_pengguna?.message}
                   className="pb-2"
@@ -116,11 +162,9 @@ const PenggunaEdit = () => {
                     helperWrapper: '!py-0 !ps-2.5',
                     errorMessage: 'text-small',
                   }}>
-                  {PEKERJAAN_SELECT.map((pekerjaan) => (
-                    <SelectItem key={pekerjaan.key}>
-                      {pekerjaan.label}
-                    </SelectItem>
-                  ))}
+                  {(PEKERJAAN_SELECT) => (
+                    <SelectItem>{PEKERJAAN_SELECT.label}</SelectItem>
+                  )}
                 </Select>
               )}
             />
@@ -239,6 +283,7 @@ const PenggunaEdit = () => {
                   placeholder="Masukkan Pendidikan Terakhir"
                   variant="bordered"
                   autoComplete="off"
+                  items={PENDIDIKAN_SELECT}
                   isInvalid={errors.pendidikan_terakhir_anak !== undefined}
                   errorMessage={errors.pendidikan_terakhir_anak?.message}
                   className="pb-2"
@@ -250,16 +295,16 @@ const PenggunaEdit = () => {
                     errorMessage: 'text-small',
                     base: '!py-1',
                   }}>
-                  {PENDIDIKAN_SELECT.map((pendidikan) => (
-                    <SelectItem key={pendidikan.key}>
-                      {pendidikan.label}
-                    </SelectItem>
-                  ))}
+                  {(PENDIDIKAN_SELECT) => (
+                    <SelectItem>{PENDIDIKAN_SELECT.label}</SelectItem>
+                  )}
                 </Select>
               )}
             />
           </div>
-          <ButtonSave onPress={handleSubmit(() => '')} />
+          <Button type="submit" disabled={isPendingUpdatePengguna}>
+            Simpan
+          </Button>
         </form>
       </div>
     </section>
