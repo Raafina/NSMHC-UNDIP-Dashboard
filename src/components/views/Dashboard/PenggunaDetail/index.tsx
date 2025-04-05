@@ -19,70 +19,78 @@ const PenggunaDetail = () => {
 
   return (
     <section>
-      <Skeleton isLoaded={isLoaded} className=" rounded-3xl">
-        <div className="border-2 border-primary bg-white rounded-3xl p-5">
-          {/* Profile Header */}
-          <div className="flex flex-col items-center justify-center mb-2">
-            <div className="rounded-full h-40 w-40 flex items-center justify-center">
-              {isLoaded ? (
-                <IoPersonCircleSharp className="text-blue" size={160} />
-              ) : null}
-            </div>
+      <div className="border-2 border-primary bg-white rounded-3xl p-5">
+        {/* Profile Header */}
+        <div className="flex flex-col items-center justify-center mb-2">
+          <Skeleton
+            isLoaded={isLoaded}
+            className="rounded-full h-40 w-40 flex items-center justify-center">
+            {isLoaded ? (
+              <IoPersonCircleSharp className="text-blue" size={160} />
+            ) : null}
+          </Skeleton>
 
-            <div className="w-64 flex justify-center rounded-full h-7 mb-2">
-              {isLoaded ? (
-                <h3 className="font-medium text-2xl">
-                  {dataDetailPengguna?.name}
-                </h3>
-              ) : null}
-            </div>
+          <Skeleton
+            isLoaded={isLoaded}
+            className="w-64 flex justify-center rounded-2xl h-7 mb-2">
+            {isLoaded ? (
+              <h3 className="font-medium text-2xl">
+                {dataDetailPengguna?.name}
+              </h3>
+            ) : null}
+          </Skeleton>
 
-            <div className="w-48 flex justify-center rounded-full h-7">
-              {isLoaded ? (
-                <p className="font-medium text-xl">
-                  {dataDetailPengguna?.user_profile?.no_hp}
-                </p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:px-10 lg:px-32 pt-4">
-            <div className="flex flex-col gap-y-3 w-full">
-              <DetailItem
-                label="Usia"
-                value={dataDetailPengguna?.user_profile?.age}
-              />
-              <DetailItem
-                label="Pendidikan"
-                value={dataDetailPengguna?.user_profile?.last_education}
-              />
-              <DetailItem
-                label="Pekerjaan"
-                value={dataDetailPengguna?.user_profile?.last_job}
-              />
-              <DetailItem
-                label="Alamat"
-                value={dataDetailPengguna?.user_profile?.address}
-              />
-            </div>
-
-            <div className="flex flex-col gap-y-3 w-full">
-              <DetailItem
-                label="Nama Anak"
-                value={dataDetailPengguna?.user_child?.name}
-              />
-              <DetailItem
-                label="Usia"
-                value={dataDetailPengguna?.user_child?.age}
-              />
-              <DetailItem
-                label="Pendidikan"
-                value={dataDetailPengguna?.user_child?.last_education}
-              />
-            </div>
-          </div>
+          <Skeleton
+            isLoaded={isLoaded}
+            className="w-48 flex justify-center rounded-2xl h-7">
+            {isLoaded ? (
+              <p className="font-medium text-xl">
+                {dataDetailPengguna?.user_profile?.no_hp}
+              </p>
+            ) : null}
+          </Skeleton>
         </div>
-      </Skeleton>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:px-10 lg:px-32 pt-4">
+          <Skeleton
+            isLoaded={isLoaded}
+            className="flex flex-col gap-y-3 w-full rounded-2xl">
+            <DetailItem
+              label="Usia"
+              value={dataDetailPengguna?.user_profile?.age}
+            />
+            <DetailItem
+              label="Pendidikan"
+              value={dataDetailPengguna?.user_profile?.last_education}
+            />
+            <DetailItem
+              label="Pekerjaan"
+              value={dataDetailPengguna?.user_profile?.last_job}
+            />
+            <DetailItem
+              label="Alamat"
+              value={dataDetailPengguna?.user_profile?.address}
+            />
+          </Skeleton>
+
+          <Skeleton
+            isLoaded={isLoaded}
+            className="flex flex-col gap-y-3 w-full rounded-2xl">
+            <DetailItem
+              label="Nama Anak"
+              value={dataDetailPengguna?.user_child?.name}
+            />
+            <DetailItem
+              label="Usia"
+              value={dataDetailPengguna?.user_child?.age}
+            />
+            <DetailItem
+              label="Pendidikan"
+              value={dataDetailPengguna?.user_child?.last_education}
+            />
+          </Skeleton>
+        </div>
+      </div>
     </section>
   );
 };

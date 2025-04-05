@@ -92,7 +92,9 @@ const TableUI = (props: PropTypes) => {
     <Table
       bottomContent={BottomContent}
       classNames={{
-        wrapper: 'border-primary border-2 rounded-3xl',
+        wrapper: cn('border-primary border-2 rounded-3xl', {
+          'overflow-x-hidden': isLoading || !data.length,
+        }),
         th: 'text-left font-medium p-2',
       }}
       topContent={TopContent}
