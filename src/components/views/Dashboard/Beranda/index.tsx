@@ -28,7 +28,7 @@ const Beranda = () => {
     },
     {
       icon: MdPhoneAndroid,
-      value: dataUserSummary?.total_user,
+      value: dataUserVisitorSummary?.total_app_opened,
       isLoading,
     },
     {
