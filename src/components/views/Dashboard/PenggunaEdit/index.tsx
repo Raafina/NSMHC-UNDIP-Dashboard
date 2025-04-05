@@ -40,17 +40,6 @@ const PenggunaEdit = () => {
     }
   });
 
-  // const onSubmit = (data) => {
-  //   console.log('clicked');
-  //   console.log('Form data:', data);
-  //   console.log('Errors:', errors);
-  //   handleUpdatePengguna(data);
-  // };
-
-  // const onError = (errors) => {
-  //   console.log('Form has errors:', errors);
-  // };
-
   return (
     <section>
       <div className="border-2 border-primary bg-white rounded-3xl p-5">
