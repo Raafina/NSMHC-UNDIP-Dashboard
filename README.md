@@ -10,7 +10,7 @@ Dashboard for the Nursing Students Mother Heart Connection (NSMHC) research proj
     <li>Admin Authentication</li>
     <li>Data Summary</li>
     <li>User Management</li>
-    <li>Progress and Reaction Summary data From User Activity</li>
+    <li>Progress and Reaction Summary Data from User Activity</li>
 </ul>
 
 ## 🛠️Tech Stack
