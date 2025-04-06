@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/Raafina/NSMHC-UNDIP-Dashboard/blob/main/public/images/logo/NSMHC_Logo.svg" width="400" alt="LoyalCust Logo"></p>
+<p align="center"><img src="https://github.com/Raafina/NSMHC-UNDIP-Dashboard/blob/main/public/images/logo/NSMHC_Logo.svg" width="250" alt="LoyalCust Logo"></p>
 
 
 ## Nursing Students Mother Heart Connection (NSMHC)
