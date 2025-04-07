@@ -31,8 +31,12 @@ const StatCard = ({ icon: Icon, value, isLoading }: any) => (
 );
 
 const Beranda = () => {
-  const { dataUserSummary, dataUserVisitorSummary, dataUserReactionSummary } =
-    useBeranda();
+  const {
+    dataUserSummary,
+    dataUserVisitorSummary,
+    dataUserReactionSummary,
+    dataUserAnswerSummary,
+  } = useBeranda();
   const isLoading = !dataUserSummary;
 
   const stats = [
@@ -68,7 +72,7 @@ const Beranda = () => {
 
       <Pengunjung dataUserVisitorSummary={dataUserVisitorSummary?.summary} />
       <Reaksi dataUserReactionSummary={dataUserReactionSummary} />
-      <Kemampuan />
+      <Kemampuan dataUserAnswerSummary={dataUserAnswerSummary} />
     </section>
   );
 };

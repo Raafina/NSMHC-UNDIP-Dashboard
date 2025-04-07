@@ -11,24 +11,24 @@ import {
 } from 'recharts';
 import { Skeleton } from '@heroui/react';
 
-const reactionData = [
-  { name: 'A', yes: 20, no: 8 },
-  { name: 'B', yes: 15, no: 12 },
-  { name: 'C', yes: 25, no: 5 },
-  { name: 'D', yes: 10, no: 18 },
-];
+const Kemampuan = (props: any) => {
+  const { dataUserAnswerSummary } = props;
 
-const dataWithTotal = reactionData.map((item) => ({
-  ...item,
-  total: item.yes + item.no,
-}));
-const maxTotal = Math.max(...dataWithTotal.map((item) => item.total));
+  const dataWithTotal =
+    dataUserAnswerSummary?.map((item: any) => ({
+      ...item,
+      total: item.yes + item.no,
+    })) ?? [];
 
-const Kemampuan = () => {
+  const maxTotal =
+    dataWithTotal.length > 0
+      ? Math.max(...dataWithTotal.map((item: any) => item.total))
+      : 0;
+
   return (
-    <Skeleton isLoaded={true} className="w-full rounded-2xl">
-      <div className="flex flex-col items-center p-4 md:p-9 rounded-2xl bg-brown-lighter text-brown-extreme-dark h-full w-full">
-        <h2 className="text-xl font-medium mb-4">Kemampuan</h2>
+    <Skeleton isLoaded={!!dataUserAnswerSummary} className="w-full rounded-2xl">
+      <div className="flex flex-col  p-4 md:p-9 rounded-2xl bg-brown-lighter text-brown-extreme-dark h-full w-full">
+        <h2 className="text-xl text-center font-medium mb-4">Kemampuan</h2>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={dataWithTotal} margin={{ top: 0, right: 30 }}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -40,6 +40,16 @@ const Kemampuan = () => {
             <Bar dataKey="no" fill="#AFAFAF" name="Belum" stackId="stack" />
           </BarChart>
         </ResponsiveContainer>
+        <div className="flex flex-col mt-4 text-2xl">
+          <h3 className="text-medium md:text-lg font-medium">Keterangan </h3>
+          {dataUserAnswerSummary?.map((data: any, index: number) => {
+            return (
+              <p key={index} className="text-sm md:text-base text-left">
+                {data.name}. {data.question}
+              </p>
+            );
+          })}
+        </div>
       </div>
     </Skeleton>
   );

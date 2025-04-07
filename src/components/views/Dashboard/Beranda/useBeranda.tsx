@@ -37,10 +37,22 @@ const useBeranda = () => {
     enabled: isReady,
   });
 
+  const getUserAnswerSummary = async () => {
+    const res = await berandaServices.getUserAnswerSummary();
+    return res.data.data;
+  };
+
+  const { data: dataUserAnswerSummary } = useQuery({
+    queryKey: ['dataUserAnswerSummary'],
+    queryFn: () => getUserAnswerSummary(),
+    enabled: isReady,
+  });
+
   return {
     dataUserSummary,
     dataUserVisitorSummary,
     dataUserReactionSummary,
+    dataUserAnswerSummary,
   };
 };
 
