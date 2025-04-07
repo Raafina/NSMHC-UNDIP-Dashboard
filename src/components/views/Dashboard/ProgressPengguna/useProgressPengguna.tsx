@@ -14,7 +14,6 @@ const useProgressPengguna = () => {
     }
     const res = await contentServices.getAllContentProgress(params);
     const data = res.data.data;
-    console.log(data, 'data');
     return data;
   };
 

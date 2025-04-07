@@ -51,7 +51,7 @@ const Beranda = () => {
         ))}
       </div>
 
-      <Pengunjung />
+      <Pengunjung dataUserVisitorSummary={dataUserVisitorSummary?.summary} />
       <Reaksi />
       <Kemampuan />
     </section>

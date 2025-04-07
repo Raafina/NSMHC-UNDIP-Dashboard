@@ -54,7 +54,6 @@ const usePenggunaEditPassword = () => {
       `${query.id}`,
       payload
     );
-    console.log(data, 'data');
     return data.data;
   };
 

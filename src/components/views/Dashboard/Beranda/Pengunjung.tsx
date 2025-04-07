@@ -9,30 +9,54 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { useMemo } from 'react';
 
-const visitorData = [
-  { name: 'Januari', '2024': 34, '2025': 63, '2026': 28 },
-  { name: 'Februari', '2024': 87, '2025': 22, '2026': 44 },
-  { name: 'Maret', '2024': 53, '2025': 38, '2026': 70 },
-  { name: 'April', '2024': 65, '2025': 17, '2026': 81 },
-  { name: 'Mei', '2024': 48, '2025': 55, '2026': 29 },
-  { name: 'Juni', '2024': 72, '2025': 34, '2026': 66 },
-  { name: 'Juli', '2024': 21, '2025': 80, '2026': 45 },
-  { name: 'Agustus', '2024': 90, '2025': 58, '2026': 61 },
-  { name: 'September', '2024': 39, '2025': 73, '2026': 52 },
-  { name: 'Oktober', '2024': 46, '2025': 68, '2026': 27 },
-  { name: 'November', '2024': 55, '2025': 40, '2026': 37 },
-  { name: 'Desember', '2024': 63, '2025': 49, '2026': 88 },
-];
+const generateRandomColor = (index: number): string => {
+  const hue = (index * 137.5) % 360;
 
-const Pengunjung = () => {
+  const saturation = 65 + Math.random() * 20;
+  const lightness = 45 + Math.random() * 10;
+
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+};
+
+const Pengunjung = ({
+  dataUserVisitorSummary,
+}: {
+  dataUserVisitorSummary: any[];
+}) => {
+  const years = useMemo(() => {
+    if (!dataUserVisitorSummary || dataUserVisitorSummary.length === 0)
+      return [];
+
+    const sample = dataUserVisitorSummary[0];
+    return Object.keys(sample)
+      .filter((key) => key !== 'name' && !isNaN(Number(key)))
+      .sort((a, b) => parseInt(a) - parseInt(b));
+  }, [dataUserVisitorSummary]);
+
+  const yearColors = useMemo(() => {
+    const colors: Record<string, string> = {};
+    years.forEach((year, index) => {
+      colors[year] = generateRandomColor(index);
+    });
+    return colors;
+  }, [years]);
+
+  const getLineStyle = (index: number) => {
+    const styles = ['', '5 5', '10 5', '5 1 5'];
+    return index % 4 === 0 ? '' : styles[index % styles.length];
+  };
+
   return (
-    <Skeleton isLoaded={true} className="w-full rounded-2xl">
+    <Skeleton
+      isLoaded={!!dataUserVisitorSummary}
+      className="w-full rounded-2xl">
       <div className="flex flex-col items-center p-4 md:p-9 rounded-2xl bg-brown-lighter text-brown-extreme-dark h-full w-full">
         <h1 className="font-medium text-xl mb-4">Pengunjung Aplikasi</h1>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart
-            data={visitorData}
+            data={dataUserVisitorSummary}
             margin={{ top: 0, right: 30, bottom: 43 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <Legend verticalAlign="top" height={29} />
@@ -43,10 +67,22 @@ const Pengunjung = () => {
               textAnchor="end"
             />
             <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="2024" stroke="#F2A263" />
-            <Line type="monotone" dataKey="2025" stroke="#8D4D24" />
-            <Line type="monotone" dataKey="2026" stroke="#2C2C2C" />
+            <Tooltip
+              formatter={(value, name) => [`${value}`, `Tahun ${name}`]}
+              labelFormatter={(label) => `${label}`}
+            />
+            {years.map((year, index) => (
+              <Line
+                key={year}
+                type="monotone"
+                dataKey={year}
+                stroke={yearColors[year]}
+                name={year}
+                strokeWidth={2}
+                strokeDasharray={getLineStyle(index)}
+                activeDot={{ r: 6 }}
+              />
+            ))}
           </LineChart>
         </ResponsiveContainer>
       </div>

@@ -90,6 +90,7 @@ const TableUI = (props: PropTypes) => {
 
   return (
     <Table
+      aria-label="Data Table"
       bottomContent={BottomContent}
       classNames={{
         wrapper: cn('border-primary border-2 rounded-3xl', {

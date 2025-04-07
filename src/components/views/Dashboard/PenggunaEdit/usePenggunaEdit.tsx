@@ -39,9 +39,7 @@ const usePenggunaEdit = () => {
   });
 
   const updatePengguna = async (payload: any) => {
-    console.log('hitted');
     const data = await penggunaServices.updatePengguna(`${query.id}`, payload);
-    console.log(data);
     return data.data;
   };
 
