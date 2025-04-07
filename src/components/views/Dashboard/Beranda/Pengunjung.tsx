@@ -20,11 +20,9 @@ const generateRandomColor = (index: number): string => {
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 };
 
-const Pengunjung = ({
-  dataUserVisitorSummary,
-}: {
-  dataUserVisitorSummary: any[];
-}) => {
+const Pengunjung = (props: any) => {
+  const { dataUserVisitorSummary } = props;
+
   const years = useMemo(() => {
     if (!dataUserVisitorSummary || dataUserVisitorSummary.length === 0)
       return [];

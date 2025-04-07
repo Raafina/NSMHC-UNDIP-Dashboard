@@ -7,6 +7,20 @@ import Pengunjung from './Pengunjung';
 import Reaksi from './Reaksi';
 import Kemampuan from './Kemampuan';
 
+const reactionData = [
+  { name: 'Sedih', value: 20 },
+  { name: 'Sedih', value: 10 },
+  { name: 'Sedih', value: 10 },
+  { name: 'PS', value: 10 },
+  { name: 'AI', value: 30 },
+  { name: 'CorelDraw', value: 10 },
+  { name: 'InDesign', value: 10 },
+  { name: 'Sedih', value: 10 },
+  { name: 'Sedih', value: 20 },
+  { name: 'Sedih', value: 10 },
+  { name: 'Sedih', value: 40 },
+];
+
 const StatCard = ({ icon: Icon, value, isLoading }: any) => (
   <Skeleton isLoaded={!isLoading} className="w-full rounded-2xl">
     <div className="flex flex-row items-center p-4 md:p-9 rounded-2xl bg-brown-lighter text-brown-extreme-dark">
@@ -17,7 +31,8 @@ const StatCard = ({ icon: Icon, value, isLoading }: any) => (
 );
 
 const Beranda = () => {
-  const { dataUserSummary, dataUserVisitorSummary } = useBeranda();
+  const { dataUserSummary, dataUserVisitorSummary, dataUserReactionSummary } =
+    useBeranda();
   const isLoading = !dataUserSummary;
 
   const stats = [
@@ -52,7 +67,7 @@ const Beranda = () => {
       </div>
 
       <Pengunjung dataUserVisitorSummary={dataUserVisitorSummary?.summary} />
-      <Reaksi />
+      <Reaksi dataUserReactionSummary={dataUserReactionSummary} />
       <Kemampuan />
     </section>
   );
