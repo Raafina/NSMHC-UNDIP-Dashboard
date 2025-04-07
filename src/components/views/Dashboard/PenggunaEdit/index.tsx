@@ -8,8 +8,14 @@ import usePenggunaDetail from '../PenggunaDetail/usePenggunaDetail';
 import { useEffect } from 'react';
 const PenggunaEdit = () => {
   const { dataDetailPengguna } = usePenggunaDetail();
-  const { control, errors, handleSubmit, setValue, handleUpdatePengguna } =
-    usePenggunaEdit();
+  const {
+    control,
+    errors,
+    isPendingUpdatePengguna,
+    handleSubmit,
+    setValue,
+    handleUpdatePengguna,
+  } = usePenggunaEdit();
 
   useEffect(() => {
     if (!!dataDetailPengguna) {
@@ -295,7 +301,11 @@ const PenggunaEdit = () => {
               />
             </div>
           </Skeleton>
-          <ButtonSave isLoaded={!!dataDetailPengguna} />
+          <ButtonSave
+            isLoaded={!!dataDetailPengguna}
+            disabled={isPendingUpdatePengguna}>
+            {isPendingUpdatePengguna ? 'Menyimpan...' : 'Simpan'}
+          </ButtonSave>
         </form>
       </div>
     </section>

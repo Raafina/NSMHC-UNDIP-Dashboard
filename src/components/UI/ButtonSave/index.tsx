@@ -4,10 +4,12 @@ import { Skeleton } from '@heroui/react';
 
 interface PropTypes {
   isLoaded: boolean;
+  disabled: boolean;
+  children: React.ReactNode;
 }
 
 const ButtonSave = (props: PropTypes) => {
-  const { isLoaded } = props;
+  const { isLoaded, disabled, children } = props;
   return (
     <Skeleton
       isLoaded={isLoaded}
@@ -16,8 +18,9 @@ const ButtonSave = (props: PropTypes) => {
         color="success"
         type="submit"
         className="text-white "
+        disabled={disabled}
         startContent={<FaSave className="text-brown-light" />}>
-        Simpan
+        {children}
       </Button>
     </Skeleton>
   );

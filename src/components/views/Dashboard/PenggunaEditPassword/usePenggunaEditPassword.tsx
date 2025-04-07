@@ -10,10 +10,14 @@ import * as yup from 'yup';
 
 const PenggunaEditPasswordSchema = yup.object().shape({
   email: yup.string().required('Email wajib diisi'),
-  password: yup.string().required('Kata Sandi wajib diisi'),
+  password: yup
+    .string()
+    .required('Kata Sandi wajib diisi')
+    .min(8, 'Kata Sandi minimal 8 karakter'),
   password_confirmation: yup
     .string()
     .required('Konfirmasi Kata Sandi wajib diisi')
+    .min(8, 'Kata Sandi minimal 8 karakter')
     .oneOf([yup.ref('password')], 'Konfirmasi Kata Sandi harus sama'),
 });
 
@@ -42,12 +46,11 @@ const usePenggunaEditPassword = () => {
     return data;
   };
 
-  const { data: dataPasswordPengguna, isLoading: isLoadingPasswordPengguna } =
-    useQuery({
-      queryKey: ['dataPasswordPengguna', query.id],
-      queryFn: () => getPasswordPengguna(),
-      enabled: isReady && !!query.id,
-    });
+  const { data: dataPasswordPengguna } = useQuery({
+    queryKey: ['dataPasswordPengguna', query.id],
+    queryFn: () => getPasswordPengguna(),
+    enabled: isReady && !!query.id,
+  });
 
   const updatePasswordPengguna = async (payload: any) => {
     const data = await penggunaServices.updatePasswordPengguna(
@@ -60,7 +63,6 @@ const usePenggunaEditPassword = () => {
   const {
     mutate: mutateUpdatePasswordPengguna,
     isPending: isPendingUpdatePasswordPengguna,
-    isSuccess: isSuccessUpdatePasswordPengguna,
   } = useMutation({
     mutationFn: (payload: any) => updatePasswordPengguna(payload),
     onError: (error) => {
@@ -86,9 +88,7 @@ const usePenggunaEditPassword = () => {
     isVisible,
     isVisibleConfirm,
     dataPasswordPengguna,
-    isLoadingPasswordPengguna,
     isPendingUpdatePasswordPengguna,
-    isSuccessUpdatePasswordPengguna,
     mutateUpdatePasswordPengguna,
     handleUpdatePasswordPengguna,
     setValue,

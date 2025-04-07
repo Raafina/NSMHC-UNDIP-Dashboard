@@ -1,5 +1,5 @@
 import ButtonSave from '@/components/UI/ButtonSave';
-import { Input } from '@heroui/react';
+import { Input, Spinner } from '@heroui/react';
 import { Controller } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { useEffect } from 'react';
@@ -14,8 +14,6 @@ const PenggunaEditPassword = () => {
     isVisibleConfirm,
     dataPasswordPengguna,
     isPendingUpdatePasswordPengguna,
-    isSuccessUpdatePasswordPengguna,
-    isLoadingPasswordPengguna,
     handleUpdatePasswordPengguna,
     setValue,
     handleSubmit,
@@ -140,7 +138,11 @@ const PenggunaEditPassword = () => {
             />
           </Skeleton>
           <div className="flex justify-end pt-2">
-            <ButtonSave isLoaded={!!dataPasswordPengguna} />
+            <ButtonSave
+              isLoaded={!!dataPasswordPengguna}
+              disabled={isPendingUpdatePasswordPengguna}>
+              {isPendingUpdatePasswordPengguna ? 'Menyimpan...' : 'Simpan'}
+            </ButtonSave>
           </div>
         </form>
       </div>
