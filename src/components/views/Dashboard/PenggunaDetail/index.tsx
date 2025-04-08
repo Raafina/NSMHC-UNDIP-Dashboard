@@ -1,6 +1,5 @@
 import { Skeleton } from '@heroui/react';
-import { useState } from 'react';
-import { IoPersonCircleSharp } from 'react-icons/io5';
+import Image from 'next/image';
 import usePenggunaDetail from './usePenggunaDetail';
 
 const PenggunaDetail = () => {
@@ -26,13 +25,29 @@ const PenggunaDetail = () => {
             isLoaded={isLoaded}
             className="rounded-full h-40 w-40 flex items-center justify-center">
             {isLoaded ? (
-              <IoPersonCircleSharp className="text-blue" size={160} />
+              dataDetailPengguna?.user_profile?.foto ? (
+                <Image
+                  src={dataDetailPengguna?.user_profile?.foto}
+                  alt="profile"
+                  className="rounded-full aspect-square overflow-hidden"
+                  width={160}
+                  height={160}
+                />
+              ) : (
+                <Image
+                  src="/images/illustration/default-user-foto.svg"
+                  alt="profile"
+                  className="rounded-full aspect-square overflow-hidden"
+                  width={160}
+                  height={160}
+                />
+              )
             ) : null}
           </Skeleton>
 
           <Skeleton
             isLoaded={isLoaded}
-            className="w-64 flex justify-center rounded-2xl h-7 mb-2">
+            className="w-64 flex justify-center rounded-2xl h-7 my-2">
             {isLoaded ? (
               <h3 className="font-medium text-2xl">
                 {dataDetailPengguna?.name}

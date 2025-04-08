@@ -1,5 +1,6 @@
 import TableUI from '@/components/UI/Table';
 import { PENGGUNA_HEADER_TABLE } from './Pengguna.constants';
+import Image from 'next/image';
 import { Key, ReactNode, useCallback, useEffect, useState } from 'react';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { RiEdit2Fill } from 'react-icons/ri';
@@ -34,7 +35,23 @@ const Pengguna = () => {
         case 'foto':
           return (
             <div className="flex justify-center">
-              <IoPersonCircleSharp className="text-blue" size={40} />
+              {cellValue ? (
+                <Image
+                  src={cellValue as string}
+                  alt="profile"
+                  className="w-10 h-10 rounded-full"
+                  width={40}
+                  height={40}
+                />
+              ) : (
+                <Image
+                  src="/images/illustration/default-user-foto.svg"
+                  alt="profile"
+                  className="w-10 h-10 rounded-full"
+                  width={40}
+                  height={40}
+                />
+              )}
             </div>
           );
         case 'name':
@@ -45,7 +62,7 @@ const Pengguna = () => {
               </p>
             </div>
           );
-        case 'last_job_husband':
+        case 'last_job':
           return (
             <div className="w-[100px] lg:w-full ">
               <p className="truncate lg:truncate-none">

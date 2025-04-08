@@ -3,7 +3,7 @@ const PENGGUNA_HEADER_TABLE = [
   { name: 'Foto Profil', key: 'foto' },
   { name: 'Nama Pengguna', key: 'name' },
   { name: 'Usia', key: 'usia' },
-  { name: 'Pekerjaan Suami', key: 'last_job_husband' },
+  { name: 'Pekerjaan', key: 'last_job' },
   { name: 'No HP', key: 'no_hp' },
   { name: 'Tindakan', key: 'actions' },
 ];
