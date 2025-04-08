@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import { ToasterContext } from '@/contexts/ToasterContext';
 import { useContext } from 'react';
-import { Router } from 'next/router';
+import { IUpdatePenggunaPayload } from '@/types/Pengguna';
 import * as yup from 'yup';
 import penggunaServices from '@/services/pengguna.service';
 
@@ -40,7 +40,7 @@ const usePenggunaEdit = () => {
     resolver: yupResolver(PenggunaEditSchema),
   });
 
-  const updatePengguna = async (payload: any) => {
+  const updatePengguna = async (payload: IUpdatePenggunaPayload) => {
     const data = await penggunaServices.updatePengguna(`${query.id}`, payload);
     return data.data;
   };
@@ -50,7 +50,7 @@ const usePenggunaEdit = () => {
     isPending: isPendingUpdatePengguna,
     isSuccess: isSuccessUpdatePengguna,
   } = useMutation({
-    mutationFn: (payload: any) => updatePengguna(payload),
+    mutationFn: (payload: IUpdatePenggunaPayload) => updatePengguna(payload),
     onError: (error) => {
       setToaster({
         type: 'error',
@@ -66,7 +66,7 @@ const usePenggunaEdit = () => {
     },
   });
 
-  const handleUpdatePengguna = (payload: any) => {
+  const handleUpdatePengguna = (payload: IUpdatePenggunaPayload) => {
     mutateUpdatePengguna(payload);
   };
 

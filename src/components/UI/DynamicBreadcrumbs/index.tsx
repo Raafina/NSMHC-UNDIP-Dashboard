@@ -4,15 +4,13 @@ import { Breadcrumbs, BreadcrumbItem } from '@heroui/react';
 const DynamicBreadcrumbs = () => {
   const router = useRouter();
 
-  // Ambil path dari file route (bisa berisi [id], dll)
   const pathParts = router.pathname
     .split('/')
-    .filter((part) => part !== '' && !part.startsWith('[')); // buang dynamic param
+    .filter((part) => part !== '' && !part.startsWith('['));
 
-  // Ambil path dari URL nyata (bisa /edit-akun/123)
   const pathAsParts = router.asPath
     .split('/')
-    .filter((part) => part !== '' && !/^\d+$/.test(part)); // buang angka/id
+    .filter((part) => part !== '' && !/^\d+$/.test(part));
 
   return (
     <Breadcrumbs>

@@ -44,14 +44,14 @@ export default NextAuth({
     callbacks: {
         async jwt({ token, user }: { token: JWTExtended; user: UserExtended | null }) {
             if (user) {
-                token.user = user; // Simpan data user dalam token JWT
+                token.user = user;
             }
-            return token; // Return token yang berisi data user
+            return token;
         },
         async session({ session, token }: { session: SessionExtended; token: JWTExtended }) {
-            session.user = token.user; // Simpan data user ke dalam session
-            session.accessToken = token.user?.accessToken; // Simpan access token ke dalam session
-            return session; // Return session yang berisi data user
+            session.user = token.user;
+            session.accessToken = token.user?.accessToken;
+            return session;
         },
     },
 });

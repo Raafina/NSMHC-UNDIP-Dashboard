@@ -4,6 +4,8 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ToasterContext } from '@/contexts/ToasterContext';
+import { IUpdatePenggunaPasswordPayload } from '@/types/Pengguna';
+
 import penggunaServices from '@/services/pengguna.service';
 import * as yup from 'yup';
 
@@ -51,7 +53,9 @@ const usePenggunaEditPassword = () => {
     enabled: isReady && !!query.id,
   });
 
-  const updatePasswordPengguna = async (payload: any) => {
+  const updatePasswordPengguna = async (
+    payload: IUpdatePenggunaPasswordPayload
+  ) => {
     const data = await penggunaServices.updatePasswordPengguna(
       `${query.id}`,
       payload
@@ -63,7 +67,8 @@ const usePenggunaEditPassword = () => {
     mutate: mutateUpdatePasswordPengguna,
     isPending: isPendingUpdatePasswordPengguna,
   } = useMutation({
-    mutationFn: (payload: any) => updatePasswordPengguna(payload),
+    mutationFn: (payload: IUpdatePenggunaPasswordPayload) =>
+      updatePasswordPengguna(payload),
     onError: (error) => {
       setToaster({
         type: 'error',
@@ -79,7 +84,9 @@ const usePenggunaEditPassword = () => {
     },
   });
 
-  const handleUpdatePasswordPengguna = (data: any) => {
+  const handleUpdatePasswordPengguna = (
+    data: IUpdatePenggunaPasswordPayload
+  ) => {
     mutateUpdatePasswordPengguna(data);
   };
   return {
