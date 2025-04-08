@@ -10,7 +10,7 @@ const PenggunaDetail = () => {
     <div className="grid grid-cols-[100px_40px_1fr] gap-x-2 w-full">
       <div className="font-medium">{label}</div>
       <div className="text-center">:</div>
-      <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+      <div className="break-words whitespace-pre-wrap overflow-hidden">
         {value || '-'}
       </div>
     </div>
@@ -24,49 +24,38 @@ const PenggunaDetail = () => {
           <Skeleton
             isLoaded={isLoaded}
             className="rounded-full h-40 w-40 flex items-center justify-center">
-            {isLoaded ? (
-              dataDetailPengguna?.user_profile?.foto ? (
-                <Image
-                  src={dataDetailPengguna?.user_profile?.foto}
-                  alt="profile"
-                  className="rounded-full aspect-square overflow-hidden"
-                  width={160}
-                  height={160}
-                />
-              ) : (
-                <Image
-                  src="/images/illustration/default-user-foto.svg"
-                  alt="profile"
-                  className="rounded-full aspect-square overflow-hidden"
-                  width={160}
-                  height={160}
-                />
-              )
-            ) : null}
+            {dataDetailPengguna?.user_profile?.foto ? (
+              <Image
+                src={dataDetailPengguna?.user_profile?.foto}
+                alt="profile"
+                className="rounded-full aspect-square overflow-hidden"
+                width={160}
+                height={160}
+              />
+            ) : (
+              <Image
+                src="/images/illustration/default-user-foto.svg"
+                alt="profile"
+                className="rounded-full aspect-square overflow-hidden"
+                width={160}
+                height={160}
+              />
+            )}
           </Skeleton>
 
           <Skeleton
             isLoaded={isLoaded}
-            className="w-64 flex justify-center rounded-2xl h-7 my-2">
-            {isLoaded ? (
-              <h3 className="font-medium text-2xl">
-                {dataDetailPengguna?.name}
-              </h3>
-            ) : null}
-          </Skeleton>
-
-          <Skeleton
-            isLoaded={isLoaded}
-            className="w-48 flex justify-center rounded-2xl h-7">
-            {isLoaded ? (
-              <p className="font-medium text-xl">
-                {dataDetailPengguna?.user_profile?.no_hp}
-              </p>
-            ) : null}
+            className="rounded-2xl my-2 flex flex-col items-center text-center max-w-[340px] w-full px-4 gap-1">
+            <h3 className="font-medium text-2xl min-h-[32px] w-full break-words whitespace-normal text-center">
+              {dataDetailPengguna?.name || 'Nama Pengguna'}
+            </h3>
+            <p className="font-medium text-xl min-h-[28px] w-full break-words whitespace-normal text-center">
+              {dataDetailPengguna?.user_profile?.no_hp || '08xxxxxxxxxx'}
+            </p>
           </Skeleton>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:px-10 lg:px-32 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:px-10 lg:px-32 ">
           <Skeleton
             isLoaded={isLoaded}
             className="flex flex-col gap-y-3 w-full rounded-2xl">

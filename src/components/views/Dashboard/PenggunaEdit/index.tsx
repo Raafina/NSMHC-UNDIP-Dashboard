@@ -6,11 +6,18 @@ import ButtonSave from '@/components/UI/ButtonSave';
 import usePenggunaEdit from './usePenggunaEdit';
 import usePenggunaDetail from '../PenggunaDetail/usePenggunaDetail';
 import { useEffect } from 'react';
+
 const PenggunaEdit = () => {
   const { dataDetailPengguna, isSuccessGetDetailPengguna } =
     usePenggunaDetail();
-  const { control, errors, handleSubmit, setValue, handleUpdatePengguna } =
-    usePenggunaEdit();
+  const {
+    control,
+    errors,
+    isPendingUpdatePengguna,
+    handleSubmit,
+    setValue,
+    handleUpdatePengguna,
+  } = usePenggunaEdit();
 
   useEffect(() => {
     if (!!dataDetailPengguna) {
@@ -348,8 +355,10 @@ const PenggunaEdit = () => {
               )}
             </div>
           </div>
-          <ButtonSave isLoaded={!!dataDetailPengguna} disabled={false}>
-            Simpan
+          <ButtonSave
+            isLoaded={!!dataDetailPengguna}
+            disabled={isPendingUpdatePengguna}>
+            {isPendingUpdatePengguna ? 'Menyimpan...' : 'Simpan'}
           </ButtonSave>
         </form>
       </div>
