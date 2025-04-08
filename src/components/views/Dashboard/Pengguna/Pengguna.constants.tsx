@@ -1,5 +1,5 @@
 const PENGGUNA_HEADER_TABLE = [
-  { name: 'No', key: 'id' },
+  { name: 'No', key: 'no' },
   { name: 'Foto Profil', key: 'foto' },
   { name: 'Nama Pengguna', key: 'name' },
   { name: 'Usia', key: 'usia' },

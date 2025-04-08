@@ -23,7 +23,11 @@ interface PropTypes {
   isLoading?: boolean;
   currentPage?: number;
   onClickButtonTopContent?: () => void;
-  renderCell: (item: Record<string, unknown>, columnKey: Key) => ReactNode;
+  renderCell: (
+    item: Record<string, unknown>,
+    columnKey: Key,
+    index: number
+  ) => ReactNode;
   showSearch?: boolean;
   totalPages: number;
   setSearchQuery: (query: string) => void;
@@ -129,7 +133,7 @@ const TableUI = (props: PropTypes) => {
                 className={cn('text-center', {
                   'text-start': columnKey === 'name',
                 })}>
-                {renderCell(item, columnKey)}
+                {renderCell(item, columnKey, data.indexOf(item))}
               </TableCell>
             )}
           </TableRow>

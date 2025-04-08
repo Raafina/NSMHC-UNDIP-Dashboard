@@ -26,13 +26,14 @@ const Reaksi = () => {
   }, [isReady]);
 
   const renderCell = useCallback(
-    (data: Record<string, unknown>, columnKey: Key) => {
+    (data: Record<string, unknown>, columnKey: Key, index: number) => {
       const cellValue = data[columnKey as keyof typeof data];
       switch (columnKey) {
         case 'no':
-          return (
-            <div className="w-[50px] lg:w-full">{cellValue as ReactNode}</div>
-          );
+          const currentPage = query.page ? parseInt(query.page as string) : 1;
+          const itemsPerPage = dataAllReaksi?.per_page || 8;
+          const calculatedIndex = (currentPage - 1) * itemsPerPage + index + 1;
+          return calculatedIndex;
         case 'name':
           return (
             <div className="w-[150px] lg:w-full ">

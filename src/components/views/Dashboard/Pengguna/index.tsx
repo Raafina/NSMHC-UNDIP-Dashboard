@@ -29,9 +29,14 @@ const Pengguna = () => {
   }, [isReady]);
 
   const renderCell = useCallback(
-    (data: Record<string, unknown>, columnKey: Key) => {
+    (data: Record<string, unknown>, columnKey: Key, index: number) => {
       const cellValue = data[columnKey as keyof typeof data];
       switch (columnKey) {
+        case 'no':
+          const currentPage = query.page ? parseInt(query.page as string) : 1;
+          const itemsPerPage = dataAllPengguna?.per_page || 8;
+          const calculatedIndex = (currentPage - 1) * itemsPerPage + index + 1;
+          return calculatedIndex;
         case 'foto':
           return (
             <div className="flex justify-center">
