@@ -1,9 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useContext } from 'react';
 import { ToasterContext } from '@/contexts/ToasterContext';
 import penggunaServices from '@/services/pengguna.service';
 import * as yup from 'yup';
@@ -22,7 +21,7 @@ const PenggunaEditPasswordSchema = yup.object().shape({
 });
 
 const usePenggunaEditPassword = () => {
-  const { query, isReady } = useRouter();
+  const { query, isReady, push } = useRouter();
   const { setToaster } = useContext(ToasterContext);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -76,6 +75,7 @@ const usePenggunaEditPassword = () => {
         type: 'success',
         message: 'Berhasil memperbarui data pengguna',
       });
+      push('/dashboard/pengguna');
     },
   });
 

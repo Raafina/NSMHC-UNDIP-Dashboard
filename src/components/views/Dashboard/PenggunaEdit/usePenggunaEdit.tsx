@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import { ToasterContext } from '@/contexts/ToasterContext';
 import { useContext } from 'react';
+import { Router } from 'next/router';
 import * as yup from 'yup';
 import penggunaServices from '@/services/pengguna.service';
 
@@ -26,6 +27,7 @@ const PenggunaEditSchema = yup.object().shape({
 });
 
 const usePenggunaEdit = () => {
+  const router = useRouter();
   const { query } = useRouter();
   const { setToaster } = useContext(ToasterContext);
 
@@ -60,6 +62,7 @@ const usePenggunaEdit = () => {
         type: 'success',
         message: 'Berhasil memperbarui data pengguna',
       });
+      router.push('/dashboard/pengguna');
     },
   });
 

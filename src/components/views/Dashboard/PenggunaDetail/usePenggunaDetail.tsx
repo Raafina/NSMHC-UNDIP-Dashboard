@@ -14,7 +14,7 @@ const usePenggunaDetail = () => {
   const {
     data: dataDetailPengguna,
     isLoading: isLoadingDetailPengguna,
-    isRefetching: isRefetchDetailPengguna,
+    isSuccess: isSuccessGetDetailPengguna,
   } = useQuery({
     queryKey: ['dataDetailPengguna', query.id],
     queryFn: () => getDetailPengguna(),
@@ -23,7 +23,7 @@ const usePenggunaDetail = () => {
   return {
     dataDetailPengguna,
     isLoadingDetailPengguna,
-    isRefetchDetailPengguna,
+    isSuccessGetDetailPengguna,
   };
 };
 
