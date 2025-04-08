@@ -82,19 +82,23 @@ const Pengguna = () => {
                 <FaEye
                   size={20}
                   className="text-brown-lighter"
-                  onClick={() => push(`/dashboard/pengguna/${data.id}`)}
+                  onClick={() => push(`/dashboard/pengguna/detail/${data.id}`)}
                 />
               </button>
               <button
                 type="button"
                 className="bg-blue p-1 rounded-lg"
-                onClick={() => push(`/dashboard/pengguna/edit/${data.id}`)}>
+                onClick={() =>
+                  push(`/dashboard/pengguna/edit-profil/${data.id}`)
+                }>
                 <RiEdit2Fill size={20} className="text-brown-lighter" />
               </button>
               <button
                 type="button"
                 className="bg-secondary p-1 rounded-lg"
-                onClick={() => push(`/dashboard/pengguna/password/${data.id}`)}>
+                onClick={() =>
+                  push(`/dashboard/pengguna/edit-akun/${data.id}`)
+                }>
                 <FaUnlockAlt size={20} className="text-brown-lighter" />
               </button>
             </div>

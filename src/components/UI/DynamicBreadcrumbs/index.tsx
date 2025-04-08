@@ -3,23 +3,36 @@ import { Breadcrumbs, BreadcrumbItem } from '@heroui/react';
 
 const DynamicBreadcrumbs = () => {
   const router = useRouter();
-  const pathParts = router.pathname.split('/').filter((part) => part !== '');
+
+  // Ambil path dari file route (bisa berisi [id], dll)
+  const pathParts = router.pathname
+    .split('/')
+    .filter((part) => part !== '' && !part.startsWith('[')); // buang dynamic param
+
+  // Ambil path dari URL nyata (bisa /edit-akun/123)
+  const pathAsParts = router.asPath
+    .split('/')
+    .filter((part) => part !== '' && !/^\d+$/.test(part)); // buang angka/id
 
   return (
-    <Breadcrumbs className="py-1 text-brown-extreme-dark">
+    <Breadcrumbs>
       {pathParts.map((part, index) => {
-        const href = '/' + pathParts.slice(0, index + 1).join('/');
+        const href = '/' + pathAsParts.slice(0, index + 1).join('/');
         const isLast = index === pathParts.length - 1;
+
+        const label = part
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
 
         return (
           <BreadcrumbItem
             key={href}
-            href={href}
-            isCurrent={isLast}
+            href={isLast ? undefined : href}
             classNames={{
               item: `hover:underline ${isLast ? 'text-secondary' : 'text-brown-extreme-dark'}`,
             }}>
-            {part.charAt(0).toUpperCase() + part.slice(1)}
+            {label}
           </BreadcrumbItem>
         );
       })}
