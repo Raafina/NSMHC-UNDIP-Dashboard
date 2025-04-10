@@ -53,7 +53,7 @@ const TableUI = (props: PropTypes) => {
       <div className="flex gap-2">
         <Input
           type="text"
-          placeholder="Masukkan email"
+          placeholder="Cari berdasarkan nama pengguna"
           radius="full"
           variant="bordered"
           autoComplete="off"
