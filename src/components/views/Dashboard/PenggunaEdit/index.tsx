@@ -137,9 +137,7 @@ const PenggunaEdit = () => {
                           base: '!py-1',
                         }}>
                         {PENDIDIKAN_SELECT.map((item) => (
-                          <SelectItem key={item.key} value={item.key}>
-                            {item.label}
-                          </SelectItem>
+                          <SelectItem key={item.key}>{item.label}</SelectItem>
                         ))}
                       </Select>
                     )}
@@ -175,9 +173,7 @@ const PenggunaEdit = () => {
                           errorMessage: 'text-small',
                         }}>
                         {PEKERJAAN_SELECT.map((item) => (
-                          <SelectItem key={item.key} value={item.key}>
-                            {item.label}
-                          </SelectItem>
+                          <SelectItem key={item.key}>{item.label}</SelectItem>
                         ))}
                       </Select>
                     )}
@@ -335,9 +331,7 @@ const PenggunaEdit = () => {
                           base: '!py-1',
                         }}>
                         {PENDIDIKAN_SELECT.map((item) => (
-                          <SelectItem key={item.key} value={item.key}>
-                            {item.label}
-                          </SelectItem>
+                          <SelectItem key={item.key}>{item.label}</SelectItem>
                         ))}
                       </Select>
                     )}
