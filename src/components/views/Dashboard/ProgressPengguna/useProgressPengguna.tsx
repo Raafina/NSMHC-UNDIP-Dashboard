@@ -20,8 +20,8 @@ const useProgressPengguna = () => {
   const handleSearch = (search: string) => {
     router.push({
       query: {
-        search: search || undefined,
         page: 1,
+        search: search || undefined,
       },
     });
   };
