@@ -5,6 +5,7 @@ import useLogin from './useLogin';
 import { Controller } from 'react-hook-form';
 import { cn } from '@/utils/cn';
 import { MdAdminPanelSettings } from 'react-icons/md';
+import { motion } from 'framer-motion';
 
 const Login = () => {
   const {
@@ -18,7 +19,11 @@ const Login = () => {
   } = useLogin();
   return (
     <div className="flex w-full flex-col items-center justify-center gap-10 md:flex-row lg:gap-60">
-      <div className="hidden md:flex w-full flex-col items-center justify-center md:w-1/2 ">
+      <motion.div className="hidden md:flex w-full flex-col items-center justify-center md:w-1/2 "
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}>
         <Image
           src="/images/logo/NSMHC_Logo.svg"
           alt="logo"
@@ -27,8 +32,12 @@ const Login = () => {
         />
         <h1 className="text-5xl font-bold mt-5 tracking-widest">NSMHC</h1>
         <p className="text-sm">Nursing Students Mother Heart Connection</p>
-      </div>
-      <div className="border rounded-3xl bg-white p-6 shadow-lg">
+      </motion.div>
+      <motion.div className="border rounded-3xl bg-white p-6 shadow-lg"
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5 }}>
         {errors.root && (
           <p className="mb-2 font-medium text-danger">
             {errors?.root?.message}
@@ -115,7 +124,7 @@ const Login = () => {
             </Button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };
